@@ -1,0 +1,1 @@
+Svenska Nyheter in new Chrome tab

@@ -1,0 +1,22 @@
+{
+  "name": "svenska-nyheter",
+  "version": "0.1.0",
+  "description": "Alla nyheter på en ny tabb.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "author": "David Paulsson <david@davidpaulsson.se>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "parcel-bundler": "^1.6.2"
+  }
+}
