@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
   "author": "David Paulsson <david@davidpaulsson.se>",
   "license": "MIT",
@@ -17,6 +21,9 @@
   },
   "devDependencies": {
     "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.6.2"
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "parcel-bundler": "^1.6.2",
+    "prettier": "1.11.1"
   }
 }
