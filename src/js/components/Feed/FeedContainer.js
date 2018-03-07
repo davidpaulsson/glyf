@@ -32,7 +32,9 @@ class FeedContainer extends React.Component {
       <div className={styles.container}>
         <div className={styles.sourceWrappper}>
           <img src={this.props.logo} className={styles.logo} />
-          <h4 className={styles.source}>{this.props.source}</h4>
+          <a href={this.props.url} className={styles.source}>
+            {this.props.source}
+          </a>
         </div>
         <Feed news={this.state.news} />
       </div>

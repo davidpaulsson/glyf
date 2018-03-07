@@ -7,11 +7,15 @@
 .sourceWrappper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #fff;
-  margin: 4px 18px 4px 8px;
+  margin: 4px 8px 0 0;
   padding-top: 8px;
   padding-bottom: 8px;
   margin-bottom: 4px;
+  @media (min-width: 1000px) {
+    margin: 4px 18px 4px 8px;
+  }
 }
 .logo {
   max-height: 24px;
@@ -19,7 +23,11 @@
   margin-left: 8px;
 }
 .source {
-  margin-left: 1em;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-right: 8px;
+  color: #000;
+  border: 0;
+  h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }

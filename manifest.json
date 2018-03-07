@@ -1,11 +1,13 @@
 {
   "author": "David Paulsson <david@davidpaulsson.se>",
   "name": "Svenska Nyheter",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "manifest_version": 2,
   "description": "Alla nyheter på en ny tabb.",
-  "permissions" : ["management"],
-  "chrome_url_overrides" : {
-      "newtab": "dist/index.html"
+  "permissions": ["management"],
+  "content_security_policy":
+    "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
   }
 }
