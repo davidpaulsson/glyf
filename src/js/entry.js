@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Feed from './components/Feed';
 import _ from 'lodash';
 
-import styles from '../css/entry.scss';
+import styles from './entry.scss';
 
 const sources = [
   {
@@ -20,18 +20,18 @@ const sources = [
   },
   {
     title: 'Expressen',
-    feedUrl: 'https://expressen.se/rss/nyheter',
+    feedUrl: 'https://feeds.expressen.se',
   },
   {
     title: 'Aftonbladet',
-    feedUrl: 'https://www.aftonbladet.se/nyheter/rss.xml',
+    feedUrl: 'https://www.aftonbladet.se/rss.xml',
   },
 ];
 
 const App = () => (
   <div className={styles.app}>
     {_.sortBy(sources, 'title').map(source => (
-      <Feed title={source.title} feedUrl={source.feedUrl} />
+      <Feed key={source.title} source={source.title} feedUrl={source.feedUrl} />
     ))}
   </div>
 );

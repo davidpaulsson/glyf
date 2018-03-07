@@ -1,6 +1,7 @@
 import React from 'react';
 import { ekotSerializer, defaultSerializer } from '../../../utils/serializer';
 import Feed from './Feed';
+import styles from './FeedContainer.scss';
 
 class FeedContainer extends React.Component {
   constructor() {
@@ -27,7 +28,12 @@ class FeedContainer extends React.Component {
       .then(news => this.setState({ news }));
   }
   render() {
-    return <Feed news={this.state.news} />;
+    return (
+      <div className={styles.container}>
+        <h4 className={styles.source}>{this.props.source}</h4>
+        <Feed news={this.state.news} />
+      </div>
+    );
   }
 }
 

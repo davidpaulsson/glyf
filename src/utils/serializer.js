@@ -14,12 +14,15 @@ export const ekotSerializer = json =>
     }))
   );
 
-export const defaultSerializer = json =>
-  sortByDate(
+export const defaultSerializer = json => {
+  console.log(json);
+  return sortByDate(
     json.query.results.rss.channel.item.map(item => ({
       title: item.title,
       link: item.link,
       published: moment(item.pubDate).calendar(),
       sortDate: moment(item.pubDate).toDate(),
+      category: item.category,
     }))
   );
+};
