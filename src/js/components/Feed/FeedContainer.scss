@@ -4,9 +4,22 @@
   display: flex;
   flex-direction: column;
 }
-.source {
+.sourceWrappper {
+  display: flex;
+  align-items: center;
   background-color: #fff;
   margin: 4px 18px 4px 8px;
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   margin-bottom: 4px;
+}
+.logo {
+  max-height: 24px;
+  width: auto;
+  margin-left: 8px;
+}
+.source {
+  margin-left: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
 }

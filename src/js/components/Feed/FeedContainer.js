@@ -30,7 +30,10 @@ class FeedContainer extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <h4 className={styles.source}>{this.props.source}</h4>
+        <div className={styles.sourceWrappper}>
+          <img src={this.props.logo} className={styles.logo} />
+          <h4 className={styles.source}>{this.props.source}</h4>
+        </div>
         <Feed news={this.state.news} />
       </div>
     );
