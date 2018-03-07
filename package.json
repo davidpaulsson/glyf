@@ -1,5 +1,5 @@
 {
-  "name": "svenska-nyheter",
+  "name": "alla-nyheter",
   "version": "0.0.1",
   "description": "Alla nyheter på en ny tabb.",
   "main": "index.js",

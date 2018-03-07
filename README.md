@@ -1,1 +1,1 @@
-Svenska Nyheter in new Chrome tab
+All Swedish news in new tab.
