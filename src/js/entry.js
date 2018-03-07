@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Feed from './components/Feed';
-import _ from 'lodash';
+import sortBy from 'lodash.sortby';
 
 import styles from './entry.scss';
 
@@ -46,7 +46,7 @@ const sources = [
 
 const App = () => (
   <div className={styles.app}>
-    {_.sortBy(sources, 'title').map(source => (
+    {sortBy(sources, 'title').map(source => (
       <Feed
         key={source.title}
         source={source.title}

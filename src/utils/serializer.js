@@ -1,8 +1,8 @@
-import _ from 'lodash';
+import orderBy from 'lodash.orderby';
 import moment from 'moment/moment';
 import 'moment/locale/sv';
 
-const sortByDate = array => _.orderBy(array, 'sortDate', 'desc');
+const sortByDate = array => orderBy(array, 'sortDate', 'desc');
 
 export const ekotSerializer = json =>
   sortByDate(
@@ -14,9 +14,8 @@ export const ekotSerializer = json =>
     }))
   );
 
-export const defaultSerializer = json => {
-  console.log(json);
-  return sortByDate(
+export const defaultSerializer = json =>
+  sortByDate(
     json.query.results.rss.channel.item.map(item => ({
       title: item.title,
       link: item.link,
@@ -25,4 +24,3 @@ export const defaultSerializer = json => {
       category: item.category,
     }))
   );
-};
