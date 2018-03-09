@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from 'react-loader-spinner';
 import FeedItem from './FeedItem';
 import styles from './Feed.scss';
 
@@ -8,7 +9,7 @@ const Feed = ({ news }) => (
       news.map(item => <FeedItem key={item.title} item={item} />)
     ) : (
       <div className={styles.center}>
-        <img src={require('../../../assets/loader.gif')} />
+        <Loader type="TailSpin" color="#3498db" height="32" width="32" />
       </div>
     )}
   </div>
