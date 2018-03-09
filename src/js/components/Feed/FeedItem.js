@@ -6,7 +6,7 @@ import sanitizeHtml from 'sanitize-html';
 const FeedItem = ({ item }) => (
   <a href={item.link} target="_blank" className={styles.link}>
     <article className={styles.item}>
-      <strong
+      <span
         className={styles.title}
         dangerouslySetInnerHTML={{ __html: horunge(sanitizeHtml(item.title)) }}
       />

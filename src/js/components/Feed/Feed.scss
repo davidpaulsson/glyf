@@ -1,17 +1,7 @@
 .wrapper {
-  flex: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  @media (min-width: 1000px) {
-    margin: 0 8px 8px;
-  }
-}
-.feed {
-  flex: 1;
-  padding-right: 4px;
-  @media (min-width: 1000px) {
-    padding-right: 6px;
-  }
+  height: -webkit-fill-available;
+  display: grid;
+  grid-gap: var(--gap);
 }
 .center {
   display: flex;
@@ -23,5 +13,5 @@
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: #3498db;
+  background-color: var(--blue);
 }

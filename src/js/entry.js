@@ -6,6 +6,42 @@ import sortBy from 'lodash.sortby';
 import styles from './entry.scss';
 
 const sources = [
+  // {
+  //   title: 'Dagens Media',
+  //   url: 'https://www.dagensmedia.se/',
+  //   logo: '',
+  //   feedUrl: 'https://www.dagensmedia.se/rss.xml'
+  // },
+  // {
+  //   title: 'Veckans Affärer',
+  //   url: 'https://www.va.se/',
+  //   logo: '',
+  //   feedUrl: 'https://www.va.se/rss'
+  // },
+  // {
+  //   title: 'KIT',
+  //   url: 'https://kit.se/',
+  //   logo: '',
+  //   feedUrl: 'https://kit.se/feed'
+  // },
+  // {
+  //   title: 'Resume',
+  //   url: 'https://www.resume.se/',
+  //   logo: '',
+  //   feedUrl: 'https://www.resume.se/rss-nyheter'
+  // },
+  // {
+  //   title: 'Breakit',
+  //   url: 'https://www.breakit.se/',
+  //   logo: '',
+  //   feedUrl: 'https://www.breakit.se/feed/artiklar'
+  // },
+  // {
+  //   title: 'Dagens Industri',
+  //   url: 'https://www.di.se/',
+  //   logo: '',
+  //   feedUrl: 'https://www.di.se/rss'
+  // },
   {
     title: 'SVT Nyheter',
     url: 'https://www.svt.se/',

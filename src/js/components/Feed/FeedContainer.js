@@ -29,8 +29,8 @@ class FeedContainer extends React.Component {
   }
   render() {
     return (
-      <div className={styles.container}>
-        <div className={styles.sourceWrappper}>
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
           <img src={this.props.logo} className={styles.logo} />
           <a href={this.props.url} className={styles.source}>
             {this.props.source}
