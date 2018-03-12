@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changePosition } from '../../actions/positionActions';
+import orderBy from 'lodash.orderby';
 
 const Select = class extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ const Select = class extends React.Component {
   }
 };
 
-const mapStateToProps = state => ({ sources: state.news });
+const mapStateToProps = state => ({ sources: orderBy(state.news, 'title') });
 const mapDispatchToProps = (dispatch, ownProps) => ({
   changePosition: feedUrl =>
     dispatch(changePosition(ownProps.position, feedUrl)), //feedUrl, ownProps.position)),
