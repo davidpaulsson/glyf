@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
 import { fetchNews } from '../../actions/newsActions';
 import FeedHeader from './FeedHeader';
 import FeedItem from './FeedItem';
@@ -7,6 +8,12 @@ import FeedItem from './FeedItem';
 class Feed extends React.Component {
   componentWillMount() {
     this.props.fetchNewsFn(this.props.feedUrl);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.feedUrl !== this.props.feedUrl) {
+      this.props.fetchNewsFn(this.props.feedUrl);
+    }
   }
 
   render() {
@@ -21,7 +28,7 @@ class Feed extends React.Component {
         )}
         {isError && (
           <div className="feedItems__center">
-            <p>Oops something went wrong.</p>
+            <p>Oops.</p>
           </div>
         )}
         {!isLoading &&

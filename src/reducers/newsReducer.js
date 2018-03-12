@@ -11,6 +11,7 @@ const initialState = [
   // lastUpdated: null,
   // isLoading: false,
   // isError: false,
+  // position: null,
   // },
   // {
   //   title: 'Veckans Affärer',
@@ -21,6 +22,7 @@ const initialState = [
   // lastUpdated: null,
   // isLoading: false,
   // isError: false,
+  // position: null,
   // },
   // {
   //   title: 'KIT',
@@ -31,6 +33,7 @@ const initialState = [
   // lastUpdated: null,
   // isLoading: false,
   // isError: false,
+  // position: null,
   // },
   // {
   //   title: 'Resume',
@@ -41,6 +44,7 @@ const initialState = [
   // lastUpdated: null,
   // isLoading: false,
   // isError: false,
+  // position: null,
   // },
   // {
   //   title: 'Breakit',
@@ -51,6 +55,7 @@ const initialState = [
   // lastUpdated: null,
   // isLoading: false,
   // isError: false,
+  // position: null,
   // },
   // {
   //   title: 'Dagens Industri',
@@ -61,6 +66,7 @@ const initialState = [
   // lastUpdated: null,
   // isLoading: false,
   // isError: false,
+  // position: null,
   // },
   {
     title: 'SVT Nyheter',
@@ -71,6 +77,7 @@ const initialState = [
     lastUpdated: null,
     isLoading: false,
     isError: false,
+    position: 3,
   },
   {
     title: 'Sveriges Radio Ekot',
@@ -81,6 +88,7 @@ const initialState = [
     lastUpdated: null,
     isLoading: false,
     isError: false,
+    position: 5,
   },
   {
     title: 'Svenska Dagbladet',
@@ -91,6 +99,7 @@ const initialState = [
     lastUpdated: null,
     isLoading: false,
     isError: false,
+    position: 4,
   },
   {
     title: 'Expressen',
@@ -101,6 +110,7 @@ const initialState = [
     lastUpdated: null,
     isLoading: false,
     isError: false,
+    position: 2,
   },
   {
     title: 'Aftonbladet',
@@ -111,6 +121,7 @@ const initialState = [
     lastUpdated: null,
     isLoading: false,
     isError: false,
+    position: 0,
   },
   {
     title: 'Dagens Nyheter',
@@ -121,6 +132,7 @@ const initialState = [
     lastUpdated: null,
     isLoading: false,
     isError: false,
+    position: 1,
   },
 ];
 
@@ -134,6 +146,7 @@ const newsReducer = (state = initialState, action) => {
           ...state[i],
           isLoading: true,
           isError: false,
+          // position: null,
         },
         ...state.slice(i + 1),
       ];
@@ -144,6 +157,7 @@ const newsReducer = (state = initialState, action) => {
           ...state[i],
           isLoading: false,
           isError: false,
+          // position: null,
           items: action.news,
           lastUpdated: moment().toDate(),
         },
