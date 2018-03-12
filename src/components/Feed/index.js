@@ -47,15 +47,11 @@ class Feed extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const source = state.news.find(source => source.feedUrl === ownProps.feedUrl);
   return {
-    title: source.title,
-    url: source.url,
-    logo: source.logo,
-    feedUrl: source.feedUrl,
-    items: source.items,
+    ...source,
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchNewsFn: url => dispatch(fetchNews(url)),
   };
