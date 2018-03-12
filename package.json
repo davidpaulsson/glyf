@@ -27,9 +27,13 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-loader-spinner": "^1.4.7",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "sanitize-html": "^1.18.2"
   },
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-react": "^6.24.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
