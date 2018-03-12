@@ -10,7 +10,7 @@
   padding: .5rem 2.25rem .5rem 1rem;
   line-height: 1.5;
   // color: rgba(0,0,0,.75); // text
-  background-color: var(--backgroundGray);
+  background-color: $backgroundGray;
   border: 0;
   border-radius: .25rem;
   cursor: pointer;
@@ -50,13 +50,13 @@
 
 /* Focus */
 .select select:focus {
-  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem var(--blue);
+  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem $blue;
 }
 
 /* Active/open */
 .select select:active {
   color: #fff;
-  background-color: var(--blue);
+  background-color: $blue;
 }
 
 /* Hide the arrow in IE10 and up */

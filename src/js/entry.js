@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import Feed from './components/Feed';
 import sortBy from 'lodash.sortby';
 
-import styles from './entry.scss';
-
 const sources = [
   // {
   //   title: 'Dagens Media',
@@ -81,7 +79,7 @@ const sources = [
 ];
 
 const App = () => (
-  <div className={styles.app}>
+  <div className="app">
     {sortBy(sources, 'title').map(source => (
       <Feed
         key={source.title}

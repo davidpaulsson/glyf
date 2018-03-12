@@ -1,0 +1,64 @@
+.feed {
+  &__wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-gap: $gap;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: $gap;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+  }
+  &__logo {
+    max-height: 24px;
+    width: auto;
+  }
+  &__source {
+    color: #000;
+    border: 0;
+    h4 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.feedItems {
+  &__wrapper {
+    height: -webkit-fill-available;
+    display: grid;
+    grid-gap: $gap;
+  }
+  &__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4em;
+    flex-direction: column;
+  }
+}
+
+.feedItem {
+  &__item {
+    background-color: white;
+    padding: $gap;
+  }
+  &__link {
+    border-bottom: 0;
+  }
+  &__title {
+    display: block;
+    line-height: 1.25;
+    color: black;
+  }
+  &__published {
+    color: $grayText;
+  }
+}
