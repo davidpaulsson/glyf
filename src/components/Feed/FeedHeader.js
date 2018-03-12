@@ -1,12 +1,11 @@
 import React from 'react';
 import Select from '../Select';
 
-export default ({ logo, url, source }) => (
+const FeedHeader = ({ logo, title, feedUrl, position }) => (
   <div className="feed__header">
-    <img src={logo} className="feed__logo" />
-    <Select />
-    <a href={url} className="feed__source">
-      {source}
-    </a>
+    <img src={logo} alt={title} className="feed__logo" />
+    <Select feedUrl={feedUrl} position={position} />
   </div>
 );
+
+export default FeedHeader;

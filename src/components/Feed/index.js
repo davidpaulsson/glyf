@@ -17,10 +17,23 @@ class Feed extends React.Component {
   }
 
   render() {
-    const { url, logo, source, items, isLoading, isError } = this.props;
+    const {
+      feedUrl,
+      logo,
+      title,
+      items,
+      isLoading,
+      isError,
+      position,
+    } = this.props;
     return (
       <div className="feed">
-        <FeedHeader url={url} logo={logo} source={source} />
+        <FeedHeader
+          logo={logo}
+          title={title}
+          feedUrl={feedUrl}
+          position={position}
+        />
         {isLoading && (
           <div className="feedItems__center">
             <Loader type="TailSpin" color="#3498db" height="32" width="32" />
