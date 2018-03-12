@@ -5,7 +5,7 @@ const initialState = [
   {
     title: 'Dagens Media',
     url: 'https://www.dagensmedia.se/',
-    logo: '',
+    logo: require('../assets/dagens-media.svg'),
     feedUrl: 'https://www.dagensmedia.se/rss.xml',
     items: [],
     lastUpdated: null,
@@ -15,7 +15,7 @@ const initialState = [
   {
     title: 'Veckans Affärer',
     url: 'https://www.va.se/',
-    logo: '',
+    logo: require('../assets/veckans-affarer.svg'),
     feedUrl: 'https://www.va.se/rss',
     items: [],
     lastUpdated: null,
@@ -25,7 +25,7 @@ const initialState = [
   {
     title: 'KIT',
     url: 'https://kit.se/',
-    logo: '',
+    logo: require('../assets/kit.svg'),
     feedUrl: 'https://kit.se/feed',
     items: [],
     lastUpdated: null,
@@ -35,7 +35,7 @@ const initialState = [
   {
     title: 'Resume',
     url: 'https://www.resume.se/',
-    logo: '',
+    logo: require('../assets/resume.svg'),
     feedUrl: 'https://www.resume.se/rss-nyheter',
     items: [],
     lastUpdated: null,
@@ -45,7 +45,7 @@ const initialState = [
   {
     title: 'Breakit',
     url: 'https://www.breakit.se/',
-    logo: '',
+    logo: require('../assets/breakit.svg'),
     feedUrl: 'https://www.breakit.se/feed/artiklar',
     items: [],
     lastUpdated: null,
@@ -55,7 +55,7 @@ const initialState = [
   {
     title: 'Dagens Industri',
     url: 'https://www.di.se/',
-    logo: '',
+    logo: require('../assets/di.svg'),
     feedUrl: 'https://www.di.se/rss',
     items: [],
     lastUpdated: null,
