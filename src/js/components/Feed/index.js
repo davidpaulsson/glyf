@@ -1,9 +1,9 @@
 import React from 'react';
 import { ekotSerializer, defaultSerializer } from '../../../utils/serializer';
+import FeedHeader from './FeedHeader';
 import FeedItems from './FeedItems';
-import Select from '../Select';
 
-class Feed extends React.Component {
+export default class Feed extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -29,18 +29,10 @@ class Feed extends React.Component {
   }
   render() {
     return (
-      <div className="feed__wrapper">
-        <div className="feed__header">
-          <img src={this.props.logo} className="feed__logo" />
-          {/* <Select /> */}
-          <a href={this.props.url} className="feed__source">
-            {this.props.source}
-          </a>
-        </div>
+      <div className="feed">
+        <FeedHeader {...this.props} />
         <FeedItems news={this.state.news} />
       </div>
     );
   }
 }
-
-export default Feed;

@@ -1,11 +1,9 @@
 .feed {
-  &__wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    grid-gap: $gap;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-gap: $gap;
+  overflow-y: scroll;
+  overflow-x: hidden;
   &__header {
     display: flex;
     justify-content: space-between;
