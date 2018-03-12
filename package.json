@@ -28,6 +28,7 @@
     "react-loader-spinner": "^1.4.7",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
+    "redux-localstorage": "^0.4.1",
     "redux-thunk": "^2.2.0",
     "sanitize-html": "^1.18.2"
   },
