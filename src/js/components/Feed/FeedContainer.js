@@ -1,6 +1,7 @@
 import React from 'react';
 import { ekotSerializer, defaultSerializer } from '../../../utils/serializer';
 import Feed from './Feed';
+import Select from '../Select';
 import styles from './FeedContainer.scss';
 
 class FeedContainer extends React.Component {
@@ -32,6 +33,7 @@ class FeedContainer extends React.Component {
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <img src={this.props.logo} className={styles.logo} />
+          {/* <Select /> */}
           <a href={this.props.url} className={styles.source}>
             {this.props.source}
           </a>
