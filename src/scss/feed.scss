@@ -46,6 +46,9 @@
     display: block;
     line-height: 1.25;
     color: black;
+    .feedItem__link:visited & {
+      color: $grayText !important;
+    }
   }
   &__published {
     color: $grayText;
