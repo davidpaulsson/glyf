@@ -1,6 +1,6 @@
 {
   "name": "alla-nyheter",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Alla nyheter på en ny tabb.",
   "main": "index.js",
   "scripts": {
