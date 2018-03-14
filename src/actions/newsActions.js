@@ -1,5 +1,11 @@
 import * as types from './actionTypes';
-import { ekotSerializer, defaultSerializer } from '../utils/serializer';
+import {
+  defaultSerializer,
+  ekotSerializer,
+  githubSerializer,
+  hackerNewsSerializer,
+  productHuntSerializer,
+} from '../utils/serializer';
 
 const contructQuery = feedUrl =>
   `https://query.yahooapis.com/v1/public/yql?q=${encodeURIComponent(
@@ -16,13 +22,25 @@ export const fetchNews = feedUrl => {
     fetch(query)
       .then(resp => resp.json())
       .then(json => {
+        if (feedUrl.includes('hnrss')) {
+          return hackerNewsSerializer(json);
+        }
+        if (feedUrl.includes('github')) {
+          return githubSerializer(json);
+        }
         if (feedUrl.includes('sr.se')) {
           return ekotSerializer(json);
+        }
+        if (feedUrl.includes('producthunt')) {
+          return productHuntSerializer(json);
         }
         return defaultSerializer(json);
       })
       .then(json => dispatch(receiveNews(json, feedUrl)))
-      .catch(error => dispatch(fetchNewsError(error, feedUrl)));
+      .catch(error => {
+        console.error(error);
+        dispatch(fetchNewsError(error, feedUrl));
+      });
   };
 };
 

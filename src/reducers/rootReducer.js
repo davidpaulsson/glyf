@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import newsReducer from './newsReducer';
-import positionReducer from './positionReducer';
+import guiReducer from './guiReducer';
 
 const rootReducer = combineReducers({
   news: newsReducer,
-  position: positionReducer,
+  gui: guiReducer,
 });
 
 export default rootReducer;

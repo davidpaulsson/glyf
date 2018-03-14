@@ -3,6 +3,47 @@ import moment from 'moment';
 
 const initialState = [
   {
+    title: 'Product Hunt',
+    url: 'https://www.producthunt.com/',
+    logo: require('../assets/product-hunt.svg'),
+    feedUrl: 'https://www.producthunt.com/feed',
+    items: [],
+    lastUpdated: null,
+    isLoading: false,
+    isError: false,
+  },
+  {
+    title: 'Designer News',
+    url: 'https://www.designernews.co/',
+    logo: require('../assets/designer-news.svg'),
+    feedUrl: 'https://www.designernews.co/?format=rss',
+    items: [],
+    lastUpdated: null,
+    isLoading: false,
+    isError: false,
+  },
+  {
+    title: 'Hacker News',
+    url: 'https://hnrss.org/',
+    logo: require('../assets/hacker-news.svg'),
+    feedUrl: 'https://hnrss.org/newest',
+    items: [],
+    lastUpdated: null,
+    isLoading: false,
+    isError: false,
+  },
+  {
+    title: 'Github',
+    url: 'https://github.com/',
+    logo: require('../assets/github.svg'),
+    feedUrl:
+      'https://github-trends.ryotarai.info/rss/github_trends_all_daily.rss',
+    items: [],
+    lastUpdated: null,
+    isLoading: false,
+    isError: false,
+  },
+  {
     title: 'Dagens Media',
     url: 'https://www.dagensmedia.se/',
     logo: require('../assets/dagens-media.svg'),
@@ -164,9 +205,6 @@ const newsReducer = (state = initialState, action) => {
         },
         ...state.slice(i + 1),
       ];
-    }
-    case types.CHANGE_SOURCE: {
-      return state;
     }
     default:
       return state;

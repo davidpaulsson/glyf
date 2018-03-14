@@ -12,6 +12,7 @@ class App extends React.Component {
             feedUrl={source.feedUrl}
             key={`${source.feedUrl}__${i}`}
             position={i}
+            details={source.details}
           />
         ))}
       </div>
@@ -20,7 +21,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  sources: state.position,
+  sources: state.gui,
 });
 
 export default connect(mapStateToProps)(App);

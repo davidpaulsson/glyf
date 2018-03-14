@@ -4,6 +4,10 @@
   grid-gap: $gap;
   overflow-y: scroll;
   overflow-x: hidden;
+  &__header-icon-select-wrapper {
+    display: flex;
+    align-items: center;
+  }
   &__header {
     display: flex;
     justify-content: space-between;
@@ -12,7 +16,17 @@
     padding: $gap;
     position: sticky;
     top: 0;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+  }
+  &__header-icon {
+    height: 24px;
+    width: auto;
+    padding: 6px 2px;
+    margin-right: $gap;
+    background-color: $backgroundGray;
+    &:hover {
+      cursor: pointer;
+    }
   }
   &__logo {
     max-height: 24px;
@@ -20,7 +34,7 @@
   }
 }
 
-.feedItems {
+.feed-items {
   &__wrapper {
     height: -webkit-fill-available;
     display: grid;
@@ -34,23 +48,50 @@
   }
 }
 
-.feedItem {
+.feed-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   &__item {
-    background-color: white;
     padding: $gap;
+    flex: 4;
   }
   &__link {
+    background-color: white;
     border-bottom: 0;
+    overflow: -webkit-paged-x;
   }
   &__title {
-    display: block;
     line-height: 1.25;
+    display: block;
     color: black;
-    .feedItem__link:visited & {
+    margin-bottom: 0.2em;
+    .feed-item__link:visited & {
       color: $grayText !important;
     }
   }
+  &__image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $backgroundGray;
+    border-left: ($gap / 2) solid $background;
+  }
+  &__description {
+    .feed-item__link & {
+      color: $grayMediumText;
+    }
+    .feed-item__link:visited & {
+      color: $grayText;
+    }
+    font-size: 0.9em;
+    line-height: 1.35;
+    margin-top: 0;
+    margin-bottom: 0.2em;
+  }
   &__published {
+    font-size: 0.8em;
     color: $grayText;
   }
 }
