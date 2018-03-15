@@ -2,7 +2,7 @@
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/kklidjoiedcocpkddfnknenpkpcdalnp.svg)
 ![license](https://img.shields.io/github/license/davidpaulsson/alla-nyheter-extension.svg)
 
-## Alla nyheter
+# Alla nyheter
 
 [![Available in the Chrome Web Store](ChromeWebStore_Badge_v2_206x58.png)](https://chrome.google.com/webstore/detail/alla-nyheter/kklidjoiedcocpkddfnknenpkpcdalnp)
 
