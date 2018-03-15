@@ -14,7 +14,10 @@ const FeedHeader = ({
   disableDetails,
 }) => (
   <div className="feed__header">
-    <img src={logo} alt={title} className="feed__logo" />
+    <div className="feed__header-logo-title-wrapper">
+      <img src={logo} alt={title} className="feed__logo" />
+      <p className="feed__title">{title}</p>
+    </div>
     <div className="feed__header-icon-select-wrapper">
       <div data-for={feedUrl} data-tip="Ändra visning">
         {details ? (

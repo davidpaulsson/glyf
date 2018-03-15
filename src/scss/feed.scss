@@ -28,9 +28,21 @@
       cursor: pointer;
     }
   }
+  &__header-logo-title-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+  }
   &__logo {
-    max-height: 24px;
+    max-height: 32px;
     width: auto;
+    margin-right: $gap;
+  }
+  &__title {
+    font-weight: bold;
+    color: #333;
+    margin: 0;
   }
 }
 
