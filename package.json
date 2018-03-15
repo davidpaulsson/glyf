@@ -1,6 +1,6 @@
 {
   "name": "alla-nyheter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Alla nyheter på en ny tabb.",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,8 @@
     "redux-localstorage": "^0.4.1",
     "redux-thunk": "^2.2.0",
     "remove-markdown": "^0.2.2",
-    "sanitize-html": "^1.18.2"
+    "sanitize-html": "^1.18.2",
+    "truncate": "^2.0.1"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0",

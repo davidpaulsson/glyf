@@ -1,6 +1,7 @@
 import React from 'react';
 import horunge from 'horunge';
 import sanitizeHtml from 'sanitize-html';
+import truncate from 'truncate';
 
 const FeedItem = ({ item, details }) => (
   <a href={item.link} target="_blank" className="feed-item__link">
@@ -17,7 +18,7 @@ const FeedItem = ({ item, details }) => (
             <p
               className="feed-item__description"
               dangerouslySetInnerHTML={{
-                __html: sanitizeHtml(item.description),
+                __html: truncate(sanitizeHtml(item.description), 160),
               }}
             />
           )}

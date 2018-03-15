@@ -5337,6 +5337,10 @@ truncate-utf8-bytes@^1.0.0:
   dependencies:
     utf8-byte-length "^1.0.1"
 
+truncate@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/truncate/-/truncate-2.0.1.tgz#dd1a6d15630515663d8475f6f24edf2f800ebb1b"
+
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
