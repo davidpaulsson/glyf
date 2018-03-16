@@ -3,7 +3,10 @@ import persistState from 'redux-localstorage';
 import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
 
-const enhancer = compose(applyMiddleware(thunk), persistState('gui'));
+const enhancer = compose(
+  applyMiddleware(thunk),
+  persistState(['gui', 'theme'])
+);
 
 const configureStore = () => {
   return createStore(

@@ -1,10 +1,15 @@
 .app {
-  padding: $gap;
   display: grid;
   height: 100vh;
-  grid-gap: $gap;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  // grid-gap: $gap;
+  grid-template-rows: auto 1fr;
+  &__feeds {
+    grid-template-columns: repeat(3, 1fr);
+    padding: $gap;
+    grid-template-rows: repeat(2, 1fr);
+    display: grid;
+    grid-gap: $gap;
+  }
 }
 
 .tooltip {
