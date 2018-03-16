@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 const enhancer = compose(
   applyMiddleware(thunk),
-  persistState(['gui', 'theme'])
+  persistState(['sourcesLayout', 'theme'])
 );
 
 const configureStore = () => {

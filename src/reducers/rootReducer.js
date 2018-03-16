@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import newsReducer from './newsReducer';
-import guiReducer from './guiReducer';
+import sourcesReducer from './sourcesReducer';
+import sourcesLayoutReducer from './sourcesLayoutReducer';
 import themeReducer from './themeReducer';
 
 const rootReducer = combineReducers({
-  news: newsReducer,
-  gui: guiReducer,
+  sources: sourcesReducer,
+  sourcesLayout: sourcesLayoutReducer,
   theme: themeReducer,
 });
 

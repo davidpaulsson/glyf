@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changePosition } from '../../actions/guiActions';
+import { changePosition } from '../../actions/sourcesLayoutActions';
 import orderBy from 'lodash.orderby';
 
 const Select = class extends React.Component {
@@ -10,6 +10,7 @@ const Select = class extends React.Component {
   }
 
   handleChange(event) {
+    console.log(event.target.value);
     this.props.changePosition(event.target.value);
   }
 
@@ -24,7 +25,7 @@ const Select = class extends React.Component {
           onChange={this.handleChange}
         >
           {sources.map(s => (
-            <option key={s.feedUrl} value={s.feedUrl}>
+            <option key={s.feedUrl} value={s.id}>
               {s.title}
             </option>
           ))}
@@ -34,10 +35,10 @@ const Select = class extends React.Component {
   }
 };
 
-const mapStateToProps = state => ({ sources: orderBy(state.news, 'title') });
+const mapStateToProps = state => ({ sources: orderBy(state.sources, 'title') });
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  changePosition: feedUrl =>
-    dispatch(changePosition(ownProps.position, feedUrl)), //feedUrl, ownProps.position)),
+  changePosition: sourceId =>
+    dispatch(changePosition(ownProps.position, sourceId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Select);

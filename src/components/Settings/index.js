@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { enableThemeLight, enableThemeDark } from '../../actions/guiActions';
+import {
+  enableThemeLight,
+  enableThemeDark,
+} from '../../actions/sourcesLayoutActions';
 
 const Settings = ({ theme }) => (
   <div className="settings">
@@ -8,10 +11,11 @@ const Settings = ({ theme }) => (
   </div>
 );
 
-const mapStateToProps = ({ theme }) => ({ theme });
 const mapDispatchToProps = (dispatch, ownProps) => ({
   switchTheme: () =>
-    dispatch(ownProps === 'light' ? enableThemeDark() : enableThemeLight()),
+    dispatch(
+      ownProps.theme === 'light' ? enableThemeDark() : enableThemeLight()
+    ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(null, mapDispatchToProps)(Settings);

@@ -5,24 +5,31 @@ import Settings from './components/Settings';
 
 class App extends React.Component {
   render() {
-    const { gui, theme } = this.props;
+    const { sources, theme } = this.props;
     return (
       <div className="app">
         <Settings theme={theme} />
         <div className="app__feeds">
-          {gui.map((source, i) => (
-            <Feed
-              feedUrl={source.feedUrl}
-              key={`${source.feedUrl}__${i}`}
-              position={i}
-              details={source.details}
-            />
-          ))}
+          {sources.map((source, i) => {
+            console.log(source);
+            return (
+              <Feed
+                sourceId={source.sourceId}
+                key={`${source.sourceId}__${i}`}
+              />
+            );
+          })}
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ gui, theme }) => ({ gui, theme });
+const mapStateToProps = ({ sourcesLayout, theme }) => {
+  // debugger;
+  return {
+    sources: sourcesLayout,
+    theme,
+  };
+};
 export default connect(mapStateToProps)(App);

@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { enableDetails, disableDetails } from '../../actions/guiActions';
+import {
+  enableDetails,
+  disableDetails,
+} from '../../actions/sourcesLayoutActions';
 import Select from '../Select';
 import ReactTooltip from 'react-tooltip';
 
 const FeedHeader = ({
   logo,
   title,
-  feedUrl,
+  feedId,
   position,
   details,
   enableDetails,
@@ -19,7 +22,7 @@ const FeedHeader = ({
       <p className="feed__title">{title}</p>
     </div>
     <div className="feed__header-icon-select-wrapper">
-      <div data-for={feedUrl} data-tip="Ändra visning">
+      <div data-for={feedId} data-tip="Ändra visning">
         {details ? (
           <img
             className="feed__header-icon"
@@ -35,15 +38,15 @@ const FeedHeader = ({
           />
         )}
       </div>
-      <Select feedUrl={feedUrl} position={position} />
+      <Select feedId={feedId} position={position} />
     </div>
-    <ReactTooltip place="left" effect="solid" id={feedUrl} class="tooltip" />
+    <ReactTooltip place="left" effect="solid" id={feedId} class="tooltip" />
   </div>
 );
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  enableDetails: () => dispatch(enableDetails(ownProps.feedUrl)),
-  disableDetails: () => dispatch(disableDetails(ownProps.feedUrl)),
+  enableDetails: () => dispatch(enableDetails(ownProps.feedId)),
+  disableDetails: () => dispatch(disableDetails(ownProps.feedId)),
 });
 
 export default connect(null, mapDispatchToProps)(FeedHeader);

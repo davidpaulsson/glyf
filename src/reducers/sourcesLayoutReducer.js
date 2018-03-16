@@ -1,19 +1,15 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = [
-  { position: 0, feedUrl: 'https://www.aftonbladet.se/rss.xml', details: true },
-  { position: 1, feedUrl: 'https://www.dn.se/nyheter/m/rss', details: true },
-  { position: 2, feedUrl: 'https://feeds.expressen.se', details: true },
-  { position: 3, feedUrl: 'https://www.svt.se/nyheter/rss.xml', details: true },
-  { position: 4, feedUrl: 'https://www.svd.se/?service=rss', details: true },
-  {
-    position: 5,
-    feedUrl: 'https://api.sr.se/api/rss/program/83?format=145',
-    details: true,
-  },
+  { position: 0, sourceId: '11', details: true },
+  { position: 1, sourceId: '12', details: true },
+  { position: 2, sourceId: '13', details: true },
+  { position: 3, sourceId: '14', details: true },
+  { position: 4, sourceId: '15', details: true },
+  { position: 5, sourceId: '16', details: true },
 ];
 
-const guiReducer = (state = initialState, action) => {
+const sourcesLayoutReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.CHANGE_POSITION: {
       const i = state.findIndex(s => s.position === action.position);
@@ -22,13 +18,13 @@ const guiReducer = (state = initialState, action) => {
         {
           ...state[i],
           position: action.position,
-          feedUrl: action.feedUrl,
+          sourceId: action.sourceId,
         },
         ...state.slice(i + 1),
       ];
     }
     case types.ENABLE_DETAILS: {
-      const i = state.findIndex(s => s.feedUrl === action.feedUrl);
+      const i = state.findIndex(s => s.sourceId === action.sourceId);
       return [
         ...state.slice(0, i),
         {
@@ -39,7 +35,7 @@ const guiReducer = (state = initialState, action) => {
       ];
     }
     case types.DISABLE_DETAILS: {
-      const i = state.findIndex(s => s.feedUrl === action.feedUrl);
+      const i = state.findIndex(s => s.sourceId === action.sourceId);
       return [
         ...state.slice(0, i),
         {
@@ -54,4 +50,4 @@ const guiReducer = (state = initialState, action) => {
   }
 };
 
-export default guiReducer;
+export default sourcesLayoutReducer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
-import { fetchNews } from '../../actions/newsActions';
+import { fetchNews } from '../../actions/sourcesActions';
 import FeedHeader from './FeedHeader';
 import FeedItem from './FeedItem';
 
@@ -18,7 +18,7 @@ class Feed extends React.Component {
 
   render() {
     const {
-      feedUrl,
+      id,
       logo,
       title,
       items,
@@ -32,7 +32,7 @@ class Feed extends React.Component {
         <FeedHeader
           logo={logo}
           title={title}
-          feedUrl={feedUrl}
+          feedId={id}
           position={position}
           details={details}
         />
@@ -63,8 +63,14 @@ class Feed extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) =>
-  state.news.find(source => source.feedUrl === ownProps.feedUrl);
+const mapStateToProps = (state, ownProps) => {
+  const source = state.sources.find(source => source.id === ownProps.sourceId);
+  return {
+    ...source,
+    position: state.sourcesLayout.find(sl => sl.sourceId === source.id)
+      .position,
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchNews: url => dispatch(fetchNews(url)),

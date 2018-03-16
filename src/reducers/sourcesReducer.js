@@ -3,6 +3,7 @@ import moment from 'moment';
 
 const initialState = [
   {
+    id: '1',
     title: 'Product Hunt',
     url: 'https://www.producthunt.com/',
     logo: require('../assets/product-hunt.svg'),
@@ -13,6 +14,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '2',
     title: 'Designer News',
     url: 'https://www.designernews.co/',
     logo: require('../assets/designer-news.svg'),
@@ -23,6 +25,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '3',
     title: 'Hacker News',
     url: 'https://hnrss.org/',
     logo: require('../assets/hacker-news.svg'),
@@ -33,6 +36,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '4',
     title: 'Github',
     url: 'https://github.com/',
     logo: require('../assets/github.svg'),
@@ -44,6 +48,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '5',
     title: 'Dagens Media',
     url: 'https://www.dagensmedia.se/',
     logo: require('../assets/dagens-media.svg'),
@@ -54,6 +59,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '6',
     title: 'Veckans Affärer',
     url: 'https://www.va.se/',
     logo: require('../assets/veckans-affarer.svg'),
@@ -64,6 +70,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '7',
     title: 'KIT',
     url: 'https://kit.se/',
     logo: require('../assets/kit.svg'),
@@ -74,6 +81,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '8',
     title: 'Resume',
     url: 'https://www.resume.se/',
     logo: require('../assets/resume.svg'),
@@ -84,6 +92,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '9',
     title: 'Breakit',
     url: 'https://www.breakit.se/',
     logo: require('../assets/breakit.svg'),
@@ -94,6 +103,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '10',
     title: 'Dagens Industri',
     url: 'https://www.di.se/',
     logo: require('../assets/di.svg'),
@@ -104,6 +114,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '11',
     title: 'Aftonbladet',
     url: 'https://www.aftonbladet.se/',
     logo: require('./../assets/aftonbladet.svg'),
@@ -114,6 +125,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '12',
     title: 'Dagens Nyheter',
     url: 'https://www.dn.se/',
     logo: require('./../assets/dagens-nyheter.svg'),
@@ -124,6 +136,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '13',
     title: 'Expressen',
     url: 'https://expressen.se/',
     logo: require('./../assets/expressen.svg'),
@@ -134,6 +147,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '14',
     title: 'SVT Nyheter',
     url: 'https://www.svt.se/',
     logo: require('./../assets/svt.svg'),
@@ -144,6 +158,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '15',
     title: 'Svenska Dagbladet',
     url: 'https://www.svd.se/',
     logo: require('./../assets/svenska-dagbladet.svg'),
@@ -154,6 +169,7 @@ const initialState = [
     isError: false,
   },
   {
+    id: '16',
     title: 'Sveriges Radio Ekot',
     url: 'https://sverigesradio.se/ekot',
     logo: require('./../assets/sveriges-radio.svg'),
@@ -165,7 +181,7 @@ const initialState = [
   },
 ];
 
-const newsReducer = (state = initialState, action) => {
+const sourcesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_NEWS: {
       const i = state.findIndex(s => s.feedUrl === action.feedUrl);
@@ -211,4 +227,4 @@ const newsReducer = (state = initialState, action) => {
   }
 };
 
-export default newsReducer;
+export default sourcesReducer;
