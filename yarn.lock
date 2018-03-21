@@ -2421,7 +2421,7 @@ hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
-hoist-non-react-statics@^2.5.0:
+hoist-non-react-statics@^2.1.1, hoist-non-react-statics@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
 
@@ -4431,6 +4431,12 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-click-outside@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-click-outside/-/react-click-outside-3.0.1.tgz#6e77e84d2f17afaaac26dbad743cbbf909f5e24c"
+  dependencies:
+    hoist-non-react-statics "^2.1.1"
+
 react-dom@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.2.0.tgz#69003178601c0ca19b709b33a83369fe6124c044"
@@ -4439,6 +4445,10 @@ react-dom@^16.2.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-entypo@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-entypo/-/react-entypo-1.3.0.tgz#3ae8da410e926627b10d4a3a2248dc99faa30655"
 
 react-loader-spinner@^1.4.7:
   version "1.4.7"
@@ -4455,13 +4465,6 @@ react-redux@^5.0.7:
     lodash "^4.17.5"
     lodash-es "^4.17.5"
     loose-envify "^1.1.0"
-    prop-types "^15.6.0"
-
-react-tooltip@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-3.4.0.tgz#037f38f797c3e6b1b58d2534ccc8c2c76af4f52d"
-  dependencies:
-    classnames "^2.2.5"
     prop-types "^15.6.0"
 
 react@^16.2.0:

@@ -10,15 +10,9 @@ class App extends React.Component {
       <div className="app">
         <Settings theme={theme} />
         <div className="app__feeds">
-          {sources.map((source, i) => {
-            console.log(source);
-            return (
-              <Feed
-                sourceId={source.sourceId}
-                key={`${source.sourceId}__${i}`}
-              />
-            );
-          })}
+          {sources.map((source, i) => (
+            <Feed sourceId={source.sourceId} key={`${source.sourceId}__${i}`} />
+          ))}
         </div>
       </div>
     );

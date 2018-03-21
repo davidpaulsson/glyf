@@ -1,0 +1,65 @@
+[role='button'],
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
+button {
+  box-sizing: content-box;
+}
+
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
+button:focus,
+button:active,
+button:hover,
+button {
+  overflow: visible;
+
+  padding: 8;
+
+  user-select: none;
+
+  color: $grayText;
+  border: 0;
+  background: none;
+  background-color: $background;
+  box-shadow: none;
+
+  font: inherit;
+  line-height: normal;
+  &:hover {
+    color: black;
+    // background-color: $background;
+  }
+}
+
+[role='button'] {
+  display: inline-block;
+
+  cursor: default;
+  user-select: none;
+  text-align: center;
+  white-space: pre;
+  text-decoration: none;
+
+  color: inherit;
+}
+
+.spin {
+  align-items: center;
+  justify-content: center;
+
+  transform: scaleX(-1);
+  &--active {
+    svg {
+      transform-origin: 56% 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(-360deg);
+  }
+}

@@ -1,107 +1,84 @@
 .select {
-  position: relative;
-  display: inline-block;
-  color: rgba(0,0,0,.5); // arrow
-}
-.select select {
-  display: inline-block;
-  width: 100%;
-  margin: 0;
-  padding: .5rem 2.25rem .5rem 1rem;
-  line-height: 1.5;
-  background-color: $backgroundGray;
-  border: 0;
-  border-radius: .25rem;
-  cursor: pointer;
-  outline: 0;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-/* Undo the Firefox inner focus ring */
-.select select:focus:-moz-focusring {
-  color: transparent;
-  text-shadow: 0 0 0 #000;
-}
-/* Dropdown arrow */
-.select:after {
-  position: absolute;
-  top: 50%;
-  right: 1.25rem;
-  display: inline-block;
-  content: "";
-  width: 0;
-  height: 0;
-  margin-top: -.15rem;
-  pointer-events: none;
-  border-top: .35rem solid;
-  border-right: .35rem solid transparent;
-  border-bottom: .35rem solid transparent;
-  border-left: .35rem solid transparent;
-}
-
-/* Hover state */
-/* Uncomment if you need it, but be aware of the sticky iOS states.
-.select select:hover {
-  background-color: #ddd;
-}
-*/
-
-/* Focus */
-.select select:focus {
-  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem $blue;
-}
-
-/* Active/open */
-.select select:active {
-  color: #fff;
-  background-color: $blue;
-}
-
-/* Hide the arrow in IE10 and up */
-.select select::-ms-expand {
-  display: none;
-}
-
-/* Media query to target Firefox only */
-@-moz-document url-prefix() {
-  /* Firefox hack to hide the arrow */
-  .select select {
-    text-indent: 0.01px;
-    text-overflow: '';
-    padding-right: 1rem;
+  font-family: 'Roboto', sans-serif;
+  svg {
+    margin-left: $gap / 2;
   }
+  &__anchor {
+    position: relative;
 
-  /* <option> elements inherit styles from <select>, so reset them. */
-  .select option {
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    padding-right: $gap;
+
+    text-decoration: none;
+
+    color: #333;
+    border-bottom: none;
+    border-radius: 4px;
+
+    font-weight: 400;
+    &:hover {
+      cursor: pointer;
+
+      color: #333;
+      background-color: $background;
+    }
+    &--active {
+      background-color: $background;
+    }
+  }
+  &__logo {
+    width: $logoSize;
+    height: $logoSize;
+    margin-right: $gap;
+
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
     background-color: #fff;
   }
-}
+  &__drop {
+    display: none;
+    &--active {
+      position: absolute;
+      top: ($gap * 1.5) + $logoSize;
+      left: $gap;
 
-/* IE9 hack to hide the arrow */
-@media screen and (min-width:0\0) {
-  .select select {
-    z-index: 1;
-    padding: .5rem 1.5rem .5rem 1rem;
+      display: block;
+      overflow-x: hidden;
+      overflow-y: scroll;
+
+      min-width: 210px;
+      max-height: 200px;
+      margin: 0;
+      padding: 0;
+
+      list-style-type: none;
+
+      border: 1px solid $border;
+      border-radius: 4px;
+      background-color: white;
+      box-shadow: 0 0.5px 10px 0 rgba($color: #666, $alpha: 0.1);
+    }
   }
-  .select:after {
-    z-index: 5;
+  &__drop-item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    padding: $gap / 2;
+    &:hover {
+      cursor: pointer;
+
+      background-color: $background;
+    }
   }
-  .select:before {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    bottom: 0;
-    z-index: 2;
-    content: "";
+  &__drop-item-logo {
     display: block;
-    width: 1.5rem;
-    background-color: #eee;
-  }
-  .select select:hover,
-  .select select:focus,
-  .select select:active {
-    color: rgba(0,0,0,.5);
-    background-color: #eee;
+
+    width: 26px;
+    height: 26px;
+    margin-right: $gap;
   }
 }

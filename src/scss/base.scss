@@ -10,7 +10,24 @@ html {
 }
 
 body {
-  background-color: $background;
-  margin: 0;
   overflow: hidden;
+
+  margin: 0;
+
+  background-color: $background;
+
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+}
+
+.ml {
+  margin-left: $gap;
+}
+.mr {
+  margin-left: $gap;
+}
+
+small {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }

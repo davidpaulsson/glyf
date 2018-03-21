@@ -1,8 +1,13 @@
 ::-webkit-scrollbar {
   width: 4px;
+
+  border: 1px solid rgba($color: $border, $alpha: 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 4px;
+  width: 4px;
+  padding: 2px;
+
+  border-radius: $gap;
   background-color: $blue;
 }

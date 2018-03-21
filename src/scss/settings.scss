@@ -1,5 +1,17 @@
 .settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: $gap ($gap * 2);
+
+  border-bottom: 1px solid $border;
   background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: $gap;
+
+  &__logo {
+    width: auto;
+    height: $logoSize;
+
+    border-radius: 4px;
+  }
 }

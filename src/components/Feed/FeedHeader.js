@@ -4,8 +4,15 @@ import {
   enableDetails,
   disableDetails,
 } from '../../actions/sourcesLayoutActions';
-import Select from '../Select';
-import ReactTooltip from 'react-tooltip';
+import { fetchNews } from '../../actions/sourcesActions';
+import FeedSelect from './FeedSelect';
+import {
+  EntypoResizeFullScreen,
+  EntypoResize100,
+  EntypoCcw,
+  EntypoChevronDown,
+} from 'react-entypo';
+import classNames from 'classnames';
 
 const FeedHeader = ({
   logo,
@@ -13,40 +20,41 @@ const FeedHeader = ({
   feedId,
   position,
   details,
+  isLoading,
   enableDetails,
   disableDetails,
+  fetchNews,
 }) => (
   <div className="feed__header">
-    <div className="feed__header-logo-title-wrapper">
-      <img src={logo} alt={title} className="feed__logo" />
-      <p className="feed__title">{title}</p>
-    </div>
+    <FeedSelect logo={logo} title={title} />
     <div className="feed__header-icon-select-wrapper">
-      <div data-for={feedId} data-tip="Ändra visning">
-        {details ? (
-          <img
-            className="feed__header-icon"
-            src={require('../../assets/show-less.svg')}
-            onClick={disableDetails}
-          />
-        ) : (
-          <img
-            data-tip
-            className="feed__header-icon"
-            src={require('../../assets/show-more.svg')}
-            onClick={enableDetails}
-          />
-        )}
-      </div>
-      <Select feedId={feedId} position={position} />
+      <button
+        onClick={fetchNews}
+        className={classNames({
+          spin: true,
+          'spin--active': isLoading,
+        })}
+      >
+        <EntypoCcw />
+      </button>
+      {details ? (
+        <button onClick={disableDetails} className="ml">
+          <EntypoResize100 />
+        </button>
+      ) : (
+        <button onClick={enableDetails} className="ml">
+          <EntypoResizeFullScreen />
+        </button>
+      )}
+      {/* <Select feedId={feedId} position={position} /> */}
     </div>
-    <ReactTooltip place="left" effect="solid" id={feedId} class="tooltip" />
   </div>
 );
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   enableDetails: () => dispatch(enableDetails(ownProps.feedId)),
   disableDetails: () => dispatch(disableDetails(ownProps.feedId)),
+  fetchNews: () => dispatch(fetchNews(ownProps.feedUrl)),
 });
 
 export default connect(null, mapDispatchToProps)(FeedHeader);

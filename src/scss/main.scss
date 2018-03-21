@@ -1,8 +1,13 @@
+@function shade($color, $percent){
+  @return mix(black, $color, $percent);
+}
+
 @import '../../node_modules/no-class.css/src/scss/no-class.scss';
 @import 'variables';
 @import 'base';
 @import 'scrollbar';
 @import 'app';
 @import 'settings';
+@import 'button';
 @import 'feed';
 @import 'select';
