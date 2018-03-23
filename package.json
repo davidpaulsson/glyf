@@ -1,7 +1,7 @@
 {
-  "name": "alla-nyheter",
-  "version": "0.2.3",
-  "description": "Alla nyheter på en ny tabb.",
+  "name": "glyf",
+  "version": "0.3.0",
+  "description": "A new tab with news.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

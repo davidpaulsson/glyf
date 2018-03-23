@@ -1,9 +1,9 @@
 {
   "author": "David Paulsson <david@davidpaulsson.se>",
-  "name": "Alla nyheter",
-  "version": "0.2.3",
+  "name": "Glyf",
+  "version": "0.3.0",
   "manifest_version": 2,
-  "description": "Alla nyheter på en ny tabb.",
+  "description": "A new tab with news.",
   "permissions": ["management"],
   "content_security_policy":
     "script-src 'self' 'unsafe-eval'; object-src 'self'",
