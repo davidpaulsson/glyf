@@ -15,7 +15,7 @@ Currently this extension load articles from the following news sources
 * [Dagens Industri](https://www.di.se/) 🇸🇪
 * [Dagens Media](https://www.dagensmedia.se/) 🇸🇪
 * [Dagens Nyheter](https://www.dn.se/) 🇸🇪
-* [Designer News](https://www.designernews.co/)
+* [Designer News](https://www.designernews.co/) 🇺🇸
 * [Expressen](https://www.expressen.se/) 🇸🇪
 * [Github (Trending repositories)](https://github.com/trending) 🇺🇸
 * [Hacker News](https://news.ycombinator.com/) 🇺🇸
