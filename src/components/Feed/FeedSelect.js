@@ -21,7 +21,7 @@ class FeedSelect extends React.Component {
     this.setState({ open: !this.state.open });
   }
   render() {
-    const { logo, title, sources } = this.props;
+    const { logo, title, sources, changePosition } = this.props;
     const { open } = this.state;
     return (
       <div className="select">
@@ -43,7 +43,11 @@ class FeedSelect extends React.Component {
           })}
         >
           {sources.map(source => (
-            <li className="select__drop-item" key={source.id}>
+            <li
+              className="select__drop-item"
+              key={source.id}
+              onClick={() => changePosition(source.id)}
+            >
               <img
                 src={source.logo}
                 alt={source.title}

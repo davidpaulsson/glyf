@@ -19,18 +19,13 @@ button {
 
   user-select: none;
 
-  color: $grayText;
   border: 0;
   background: none;
-  background-color: $background;
   box-shadow: none;
+  text-shadow: none;
 
   font: inherit;
   line-height: normal;
-  &:hover {
-    color: black;
-    // background-color: $background;
-  }
 }
 
 [role='button'] {

@@ -1,23 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+  EntypoResizeFullScreen,
+  EntypoResize100,
+  EntypoCcw,
+} from 'react-entypo';
+import classNames from 'classnames';
+import {
   enableDetails,
   disableDetails,
 } from '../../actions/sourcesLayoutActions';
 import { fetchNews } from '../../actions/sourcesActions';
 import FeedSelect from './FeedSelect';
-import {
-  EntypoResizeFullScreen,
-  EntypoResize100,
-  EntypoCcw,
-  EntypoChevronDown,
-} from 'react-entypo';
-import classNames from 'classnames';
 
 const FeedHeader = ({
   logo,
   title,
-  feedId,
   position,
   details,
   isLoading,
@@ -26,7 +24,7 @@ const FeedHeader = ({
   fetchNews,
 }) => (
   <div className="feed__header">
-    <FeedSelect logo={logo} title={title} />
+    <FeedSelect logo={logo} title={title} position={position} />
     <div className="feed__header-icon-select-wrapper">
       <button
         onClick={fetchNews}
@@ -46,15 +44,20 @@ const FeedHeader = ({
           <EntypoResizeFullScreen />
         </button>
       )}
-      {/* <Select feedId={feedId} position={position} /> */}
     </div>
   </div>
 );
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  enableDetails: () => dispatch(enableDetails(ownProps.feedId)),
-  disableDetails: () => dispatch(disableDetails(ownProps.feedId)),
-  fetchNews: () => dispatch(fetchNews(ownProps.feedUrl)),
+  enableDetails: () => {
+    dispatch(enableDetails(ownProps.feedId));
+  },
+  disableDetails: () => {
+    dispatch(disableDetails(ownProps.feedId));
+  },
+  fetchNews: () => {
+    dispatch(fetchNews(ownProps.feedUrl));
+  },
 });
 
 export default connect(null, mapDispatchToProps)(FeedHeader);

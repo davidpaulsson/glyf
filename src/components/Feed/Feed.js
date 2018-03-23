@@ -20,7 +20,6 @@ class Feed extends React.Component {
     const {
       details,
       feedUrl,
-      id,
       isError,
       isLoading,
       items,
@@ -32,7 +31,6 @@ class Feed extends React.Component {
       <div className="feed">
         <FeedHeader
           details={details}
-          feedId={id}
           feedUrl={feedUrl}
           isLoading={isLoading}
           logo={logo}
@@ -41,7 +39,7 @@ class Feed extends React.Component {
         />
         {isLoading && (
           <div className="feed-items__center">
-            <Loader type="TailSpin" color="#3498db" height="32" width="32" />
+            <Loader type="TailSpin" color="#2399ff" height="32" width="32" />
           </div>
         )}
         {isError && (
@@ -79,7 +77,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchNews: url => dispatch(fetchNews(url)),
+  fetchNews: url => {
+    dispatch(fetchNews(url));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);

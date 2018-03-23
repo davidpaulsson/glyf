@@ -1,7 +1,22 @@
 $gap: 8px;
 $logoSize: 32px;
-$blue: #3498db;
+
+// Colors
+$primary: #2399ff;
+$defaultBackground: #fff;
 $background: #f4f8fb;
-$grayText: #9b9ba5;
-$grayMediumText: #666;
 $border: shade($background, 5);
+
+$colorLighter: shade(#fff, 35);
+$colorNormal: shade(#fff, 55);
+$colorDarker: shade(#fff, 75);
+
+// Inversed for dark theme
+$primary--theme-dark: #2399ff;
+$defaultBackground--theme-dark: #21252e;
+$background--theme-dark: #2c3038;
+$border--theme-dark: #32353a;
+
+$colorLighter--theme-dark: shade(#94969d, 25);
+$colorNormal--theme-dark: #94969d;
+$colorDarker--theme-dark: #eeeff5;
