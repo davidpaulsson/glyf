@@ -26,12 +26,15 @@ class Feed extends React.Component {
       logo,
       position,
       title,
+      sourceId,
     } = this.props;
+
     return (
       <div className="feed">
         <FeedHeader
           details={details}
           feedUrl={feedUrl}
+          feedId={sourceId}
           isLoading={isLoading}
           logo={logo}
           position={position}
