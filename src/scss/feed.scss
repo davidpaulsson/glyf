@@ -2,6 +2,7 @@
   display: grid;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   grid-template-rows: auto 1fr;
   grid-gap: $gap;

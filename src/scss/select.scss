@@ -40,6 +40,7 @@
       display: block;
       overflow-x: hidden;
       overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
 
       min-width: 210px;
       max-height: 200px;
