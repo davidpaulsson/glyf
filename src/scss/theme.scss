@@ -40,9 +40,6 @@
     }
     &__title {
       color: $colorDarker;
-      .feed-item__link:visited & {
-        color: $colorLighter !important;
-      }
     }
     &__image {
       border-left: ($gap / 2) solid $background;
@@ -50,12 +47,6 @@
     }
     &__description {
       color: $colorNormal;
-      .feed-item__link & {
-        color: $colorNormal;
-      }
-      .feed-item__link:visited & {
-        color: $colorLighter;
-      }
     }
     &__published {
       color: $colorLighter;
@@ -104,6 +95,14 @@
     background-color: $defaultBackground;
   }
 }
+.app--theme-light {
+  .feed-item__link:visited {
+    .feed-item__title,
+    .feed-item__description {
+      color: $colorLighter !important;
+    }
+  }
+}
 
 .app--theme-dark {
   // Body
@@ -147,9 +146,6 @@
     }
     &__title {
       color: $colorDarker--theme-dark;
-      .feed-item__link:visited & {
-        color: $colorLighter--theme-dark !important;
-      }
     }
     &__image {
       border-left: ($gap / 2) solid $background--theme-dark;
@@ -157,12 +153,6 @@
     }
     &__description {
       color: $colorNormal--theme-dark;
-      .feed-item__link & {
-        color: $colorNormal--theme-dark;
-      }
-      .feed-item__link:visited & {
-        color: $colorLighter--theme-dark;
-      }
     }
     &__published {
       color: $colorLighter--theme-dark;
@@ -210,5 +200,13 @@
   .settings {
     border-bottom: 1px solid $border--theme-dark;
     background-color: $defaultBackground--theme-dark;
+  }
+}
+.app--theme-dark {
+  .feed-item__link:visited {
+    .feed-item__title,
+    .feed-item__description {
+      color: $colorLighter--theme-dark !important;
+    }
   }
 }
