@@ -1,6 +1,7 @@
 .app--theme-light {
   // Body
   body & {
+    color: $colorNormal;
     background-color: $background;
   }
   // Button
@@ -107,6 +108,7 @@
 .app--theme-dark {
   // Body
   body & {
+    color: $colorNormal--theme-dark;
     background-color: $background--theme-dark;
   }
   // Button
@@ -190,6 +192,7 @@
     }
     &__drop-item {
       color: $colorDarker--theme-dark;
+
       font-size: 0.9em;
       &:hover {
         background-color: $background--theme-dark;
