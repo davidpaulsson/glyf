@@ -12,16 +12,15 @@ const initialState = [
 const sourcesLayoutReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.CHANGE_POSITION: {
-      const i = state.findIndex(s => s.position === action.position);
-      return [
-        ...state.slice(0, i),
-        {
-          ...state[i],
-          position: action.position,
-          sourceId: action.sourceId,
-        },
-        ...state.slice(i + 1),
-      ];
+      return state.map(obj => {
+        if (obj.position === action.position) {
+          return {
+            ...obj,
+            sourceId: action.sourceId,
+          };
+        }
+        return obj;
+      });
     }
     case types.ENABLE_DETAILS: {
       const i = state.findIndex(s => s.sourceId === action.sourceId);

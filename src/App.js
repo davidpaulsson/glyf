@@ -18,7 +18,7 @@ class App extends React.Component {
         <Settings theme={theme} />
         <div className="app__feeds">
           {sources.map((source, i) => (
-            <Feed sourceId={source.sourceId} key={`${source.sourceId}__${i}`} />
+            <Feed key={`${source.sourceId}__${i}`} {...source} />
           ))}
         </div>
       </div>

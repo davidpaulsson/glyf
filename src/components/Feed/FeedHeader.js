@@ -14,17 +14,18 @@ import { fetchNews } from '../../actions/sourcesActions';
 import FeedSelect from './FeedSelect';
 
 const FeedHeader = ({
-  logo,
-  title,
-  position,
   details,
-  isLoading,
-  enableDetails,
   disableDetails,
+  enableDetails,
+  feedId,
   fetchNews,
+  isLoading,
+  logo,
+  position,
+  title,
 }) => (
   <div className="feed__header">
-    <FeedSelect logo={logo} title={title} position={position} />
+    <FeedSelect value={feedId} logo={logo} title={title} position={position} />
     <div className="feed__header-icon-select-wrapper">
       <button
         onClick={fetchNews}

@@ -25,8 +25,8 @@ class Feed extends React.Component {
       items,
       logo,
       position,
-      title,
       sourceId,
+      title,
     } = this.props;
 
     return (
@@ -69,12 +69,9 @@ class Feed extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   const source = state.sources.find(source => source.id === ownProps.sourceId);
-  const { position, details } = state.sourcesLayout.find(
-    sl => sl.sourceId === source.id
-  );
+  const { details } = state.sourcesLayout.find(sl => sl.sourceId === source.id);
   return {
     ...source,
-    position,
     details,
   };
 };

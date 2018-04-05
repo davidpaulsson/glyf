@@ -2,62 +2,54 @@ import React from 'react';
 import { EntypoChevronDown, EntypoChevronUp } from 'react-entypo';
 import orderBy from 'lodash.orderBy';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
-import enhanceWithClickOutside from 'react-click-outside';
 import { changePosition } from '../../actions/sourcesLayoutActions';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 class FeedSelect extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
-    this.toggle = this.toggle.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-  handleClickOutside() {
-    if (this.state.open) {
-      this.toggle();
-    }
+  arrowRenderer({ isOpen }) {
+    return isOpen ? <EntypoChevronUp /> : <EntypoChevronDown />;
   }
-  toggle() {
-    this.setState({ open: !this.state.open });
+  optionRenderer({ logo, label }) {
+    return (
+      <div className="custom-option">
+        <img src={logo} />
+        {label}
+      </div>
+    );
+  }
+  valueComponent({ value }) {
+    return (
+      <div className="custom-value">
+        <img src={value.logo} />
+        {value.label}
+      </div>
+    );
+  }
+  handleChange({ value }) {
+    this.props.changePosition(value);
   }
   render() {
-    const { logo, title, sources, changePosition } = this.props;
-    const { open } = this.state;
+    const { value, sources } = this.props;
+
     return (
-      <div className="select">
-        <a
-          className={classNames({
-            select__anchor: true,
-            'select__anchor--active': open,
-          })}
-          onClick={this.toggle}
-        >
-          <img src={logo} alt={title} className="select__logo" />
-          {title}
-          {open ? <EntypoChevronUp /> : <EntypoChevronDown />}
-        </a>
-        <ul
-          className={classNames({
-            select__drop: true,
-            'select__drop--active': open,
-          })}
-        >
-          {sources.map(source => (
-            <li
-              className="select__drop-item"
-              key={source.id}
-              onClick={() => changePosition(source.id)}
-            >
-              <img
-                src={source.logo}
-                alt={source.title}
-                className="select__drop-item-logo"
-              />
-              {source.title}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Select
+        value={value}
+        clearable={false}
+        onChange={this.handleChange}
+        arrowRenderer={this.arrowRenderer}
+        optionRenderer={this.optionRenderer}
+        valueComponent={this.valueComponent}
+        options={sources.map(source => ({
+          value: source.id,
+          label: source.title,
+          logo: source.logo,
+        }))}
+      />
     );
   }
 }
@@ -68,6 +60,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(changePosition(ownProps.position, sourceId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  enhanceWithClickOutside(FeedSelect)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(FeedSelect);

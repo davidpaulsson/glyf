@@ -1,72 +1,149 @@
-.select {
+.Select {
+  flex: 1;
+
+  margin-right: $gap;
+
   font-family: 'Roboto', sans-serif;
-  svg {
-    margin-left: $gap / 2;
-  }
-  &__anchor {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-
-    margin: 0;
-    padding-right: $gap;
-
-    text-decoration: none;
-
-    border-bottom: none;
-    border-radius: 4px;
-
-    font-weight: 400;
-    &:hover {
-      cursor: pointer;
+  .Select-menu-outer {
+    .app--theme-dark & {
+      background-color: $background--theme-dark !important;
+    }
+    .app--theme-light & {
+      background-color: $background !important;
     }
   }
-  &__logo {
-    width: $logoSize;
-    height: $logoSize;
-    margin-right: $gap;
-
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+  &.has-value.Select--single
+    > .Select-control
+    .Select-value
+    .Select-value-label,
+  &.has-value.is-pseudo-focused.Select--single
+    > .Select-control
+    .Select-value
+    .Select-value-label {
+    .app--theme-dark & {
+      color: $colorDarker--theme-dark;
+    }
+    .app--theme-light & {
+      color: $colorDarker;
+    }
   }
-  &__drop {
-    display: none;
-    &--active {
-      position: absolute;
-      top: ($gap * 1.5) + $logoSize;
-      left: $gap;
+  &.is-open > .Select-control {
+    .app--theme-dark & {
+      border-color: $border--theme-dark !important;
+    }
+    .app--theme-light & {
+      border-color: $border !important;
+    }
+  }
+  // &.is-focused > .Select-control {
+  //   background-color: red !important;
+  // }
+  .Select-control {
+    height: 34px;
 
+    &:hover {
+      box-shadow: none;
+    }
+
+    .is-focused > &,
+    .app--theme-dark & {
+      color: $colorLighter--theme-dark !important;
+      border-color: $background--theme-dark !important;
+      background-color: $background--theme-dark !important;
+      &:hover {
+        border-color: shade(#2c3038, 10);
+        background-color: shade(#2c3038, 10);
+      }
+    }
+
+    .app--theme-light & {
+      color: $colorNormal;
+      border-color: $background;
+      background-color: $background;
+      &:hover {
+        color: $colorDarker;
+      }
+    }
+  }
+  .Select-menu-outer {
+    .app--theme-dark & {
+      border-color: $border--theme-dark;
+    }
+    .app--theme-light & {
+      border-color: $border;
+    }
+  }
+  .Select-option {
+    padding: 0;
+
+    .app--theme-dark & {
+      color: $colorNormal--theme-dark;
+      border-bottom: 1px solid $border--theme-dark;
+      background-color: $background--theme-dark;
+    }
+    .app--theme-light & {
+      color: $colorNormal;
+      border-bottom: 1px solid $border;
+      background-color: white;
+    }
+
+    &.is-focused {
+      .app--theme-dark & {
+        color: $colorDarker--theme-dark;
+      }
+      .app--theme-light & {
+        color: $colorDarker;
+        background-color: $background;
+      }
+    }
+  }
+  .custom-option {
+    display: flex;
+    align-items: center;
+    img {
       display: block;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      -webkit-overflow-scrolling: touch;
 
-      min-width: 210px;
-      max-height: 200px;
-      margin: 0;
-      padding: 0;
-
-      list-style-type: none;
-
-      border-radius: 4px;
+      width: 36px;
+      height: 36px;
+      margin-right: $gap;
     }
   }
-  &__drop-item {
+  .custom-value {
     display: flex;
+    float: left;
     align-items: center;
-    flex-direction: row;
 
-    padding: $gap / 2;
+    .app--theme-dark & {
+      color: $colorNormal--theme-dark;
+    }
+    .app--theme-light & {
+      color: $colorDarker;
+    }
+
     &:hover {
       cursor: pointer;
     }
-  }
-  &__drop-item-logo {
-    display: block;
 
-    width: 26px;
-    height: 26px;
-    margin-right: $gap;
+    img {
+      display: block;
+
+      width: auto;
+      height: 36px;
+      margin-right: $gap;
+    }
+  }
+  .Select-input {
+    float: left;
+
+    height: 36px;
+    input {
+      padding-top: 10px;
+      .app--theme-dark & {
+        color: $colorNormal--theme-dark;
+      }
+      .app--theme-light & {
+        color: $colorDarker;
+      }
+    }
   }
 }
