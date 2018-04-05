@@ -1,6 +1,5 @@
 import orderBy from 'lodash.orderby';
 import moment from 'moment/moment';
-import 'moment/locale/sv';
 import sanitizeHtml from 'sanitize-html';
 import removeMd from 'remove-markdown';
 
