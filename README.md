@@ -1,7 +1,7 @@
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/v/kklidjoiedcocpkddfnknenpkpcdalnp.svg)
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/kklidjoiedcocpkddfnknenpkpcdalnp.svg)
 ![license](https://img.shields.io/github/license/davidpaulsson/alla-nyheter-extension.svg)
-[![CircleCI](https://circleci.com/gh/davidpaulsson/glyf.svg?style=svg)](https://circleci.com/gh/davidpaulsson/glyf)
+[![CircleCI](https://circleci.com/gh/davidpaulsson/glyf.svg?style=shield)](https://circleci.com/gh/davidpaulsson/glyf)
 
 # Glyf
 
