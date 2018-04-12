@@ -12,7 +12,7 @@ module.exports = {
     },
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'jest'],
   rules: {
     indent: ['error', 2, { SwitchCase: 1 }],
     'linebreak-style': ['error', 'unix'],
@@ -20,5 +20,8 @@ module.exports = {
     semi: ['error', 'always'],
     'react/prop-types': 0,
     'react/display-name': 0,
+  },
+  env: {
+    'jest/globals': true,
   },
 };

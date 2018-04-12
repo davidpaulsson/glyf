@@ -7,7 +7,7 @@ import {
   productHuntSerializer,
 } from '../utils/serializer';
 
-const contructQuery = feedUrl =>
+export const contructQuery = feedUrl =>
   `https://query.yahooapis.com/v1/public/yql?q=${encodeURIComponent(
     `select * from feednormalizer where url="${feedUrl}"`
   )}&format=json`;
