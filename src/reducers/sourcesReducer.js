@@ -41,7 +41,7 @@ const initialState = [
     url: 'https://github.com/',
     logo: require('../assets/github.svg'),
     feedUrl:
-      'https://github-trends.ryotarai.info/rss/github_trends_all_daily.rss',
+      'http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss',
     items: [],
     lastUpdated: null,
     isLoading: false,
