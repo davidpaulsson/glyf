@@ -1,6 +1,6 @@
 {
   "name": "glyf",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A new tab with news.",
   "main": "index.js",
   "scripts": {
