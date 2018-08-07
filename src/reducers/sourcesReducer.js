@@ -179,6 +179,17 @@ const initialState = [
     isLoading: false,
     isError: false,
   },
+  {
+    id: '17',
+    title: 'Hacker News Front Page',
+    url: 'https://hnrss.org/',
+    logo: require('../assets/hacker-news.svg'),
+    feedUrl: 'https://hnrss.org/frontpage',
+    items: [],
+    lastUpdated: null,
+    isLoading: false,
+    isError: false,
+  }
 ];
 
 const sourcesReducer = (state = initialState, action) => {
