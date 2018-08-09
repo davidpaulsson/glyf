@@ -19,7 +19,8 @@ Currently this extension load articles from the following news sources
 * [Designer News](https://www.designernews.co/) 🇺🇸
 * [Expressen](https://www.expressen.se/) 🇸🇪
 * [Github (Trending repositories)](https://github.com/trending) 🇺🇸
-* [Hacker News](https://news.ycombinator.com/) 🇺🇸
+* [Hacker News (Newest)](https://news.ycombinator.com/) 🇺🇸
+* [Hacker News (Front Page)](https://news.ycombinator.com/) 🇺🇸
 * [KIT](https://kit.se/) 🇸🇪
 * [Product Hunt](https://www.producthunt.com/) 🇺🇸
 * [Resumé](https://www.resume.se/) 🇸🇪
