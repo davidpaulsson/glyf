@@ -1,16 +1,8 @@
 import * as types from './actionTypes';
-import {
-  defaultSerializer,
-  ekotSerializer,
-  githubSerializer,
-  hackerNewsSerializer,
-  productHuntSerializer,
-} from '../utils/serializer';
+import { defaultSerializer } from '../utils/serializer';
 
-export const contructQuery = feedUrl =>
-  `https://query.yahooapis.com/v1/public/yql?q=${encodeURIComponent(
-    `select * from feednormalizer where url="${feedUrl}"`
-  )}&format=json`;
+let Parser = require('rss-parser');
+let parser = new Parser();
 
 export const fetchNews = feedUrl => {
   return dispatch => {
@@ -18,29 +10,17 @@ export const fetchNews = feedUrl => {
       type: types.FETCH_NEWS,
       feedUrl,
     });
-    const query = contructQuery(feedUrl);
-    fetch(query)
-      .then(resp => resp.json())
-      .then(json => {
-        if (feedUrl.includes('hnrss')) {
-          return hackerNewsSerializer(json);
-        }
-        if (feedUrl.includes('github')) {
-          return githubSerializer(json);
-        }
-        if (feedUrl.includes('sr.se')) {
-          return ekotSerializer(json);
-        }
-        if (feedUrl.includes('producthunt')) {
-          return productHuntSerializer(json);
-        }
-        return defaultSerializer(json);
-      })
-      .then(json => dispatch(receiveNews(json, feedUrl)))
-      .catch(error => {
-        console.error(error);
-        dispatch(fetchNewsError(error, feedUrl));
-      });
+
+    const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+
+    parser.parseURL(CORS_PROXY + feedUrl, function(err, feed) {
+      if (err) {
+        console.error(err);
+        dispatch(fetchNewsError(err, feedUrl));
+        return false;
+      }
+      dispatch(receiveNews(defaultSerializer(feed), feedUrl));
+    });
   };
 };
 

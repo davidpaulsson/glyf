@@ -1,6 +1,6 @@
 {
   "name": "glyf",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "A new tab with news.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "build":
       "rm -rf dist && parcel build src/index.html --public-url ./ && cp manifest.json dist && cp src/icon16.png dist && cp src/icon32.png dist && cp src/icon48.png dist && cp src/icon128.png dist",
     "deploy": "yarn run build && push-dir --dir=dist --branch=gh-pages",
-    "precommit": "yarn test && lint-staged"
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
@@ -36,6 +36,7 @@
     "redux-localstorage": "^0.4.1",
     "redux-thunk": "^2.2.0",
     "remove-markdown": "^0.2.2",
+    "rss-parser": "^3.6.2",
     "sanitize-html": "^1.18.2",
     "truncate": "^2.0.1"
   },

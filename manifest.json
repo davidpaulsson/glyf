@@ -1,7 +1,7 @@
 {
   "author": "David Paulsson <david@davidpaulsson.se>",
   "name": "Glyf",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "manifest_version": 2,
   "description": "A new tab with news.",
   "permissions": ["management"],

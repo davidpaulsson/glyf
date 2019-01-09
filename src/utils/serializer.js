@@ -28,101 +28,19 @@ const extractImageUri = item => {
     : null;
 };
 
-export const productHuntSerializer = json =>
-  sortByDate(
-    json.query.results.feed.entry.map(item => {
-      const description =
-        item.content && item.content.content
-          ? removeMd(
-              sanitizeHtml(item.content.content, {
-                allowedTags: [],
-              }).trim()
-            )
-          : null;
-      return {
-        link: item.link.href,
-        published: moment(item.published).calendar(),
-        sortDate: moment(item.published).toDate(),
-        title: item.title, // item.title,
-        image: null, // null,
-        description: description
-          .replace(
-            `Discussion
-        |
-        Link`,
-            ''
-          )
-          .replace('“', '')
-          .replace(' ”', ''),
-      };
-    })
-  );
-
-export const ekotSerializer = json =>
-  sortByDate(
-    json.query.results.feed.entry.map(item => ({
-      link: item.link.href,
-      published: moment(item.published).calendar(),
-      sortDate: moment(item.published).toDate(),
-      title: item.title.content,
-      category: item.category.term,
-      image: null,
-      description:
-        item.summary && item.summary.content
-          ? removeMd(
-              sanitizeHtml(item.summary.content, {
-                allowedTags: [],
-              }).trim()
-            )
-          : null,
-    }))
-  );
-
-export const hackerNewsSerializer = json =>
-  sortByDate(
-    json.query.results.rss.channel.item.map(item => ({
-      link: item.link,
-      published: moment(item.pubDate).calendar(),
-      sortDate: moment(item.pubDate).toDate(),
-      title: item.title.replace(/ *\([^)]*\) */g, ''),
-      category: item.category,
-      image: null,
-      description: null,
-    }))
-  );
-
-export const githubSerializer = json =>
-  sortByDate(
-    json.query.results.rss.channel.item.map(item => ({
-      link: item.link,
-      published: moment(item.pubDate).calendar(),
-      sortDate: moment(item.pubDate).toDate(),
-      title: item.title.replace(/ *\([^)]*\) */g, ''),
-      category: item.category,
-      image: item.enclosure ? item.enclosure.url : extractImageUri(item),
-      description: item.description
-        ? removeMd(
-            sanitizeHtml(item.description, {
-              allowedTags: [],
-            }).trim()
-          )
-        : null,
-    }))
-  );
-
 export const defaultSerializer = json =>
   sortByDate(
-    json.query.results.rss.channel.item.map(item => {
+    json.items.map(item => {
       return {
         link: item.link,
         published: moment(item.pubDate).calendar(),
         sortDate: moment(item.pubDate).toDate(),
-        title: item.title,
+        title: item.title.replace(/ *\([^)]*\) */g, ''),
         category: item.category,
         image: item.enclosure ? item.enclosure.url : extractImageUri(item),
-        description: item.description
+        description: item.content
           ? removeMd(
-              sanitizeHtml(item.description, {
+              sanitizeHtml(item.content, {
                 allowedTags: [],
               }).trim()
             )
