@@ -6,51 +6,54 @@
   "scripts": {
     "test": "jest",
     "start": "parcel src/index.html",
-    "build":
-      "rm -rf dist && parcel build src/index.html --public-url ./ && cp manifest.json dist && cp src/icon16.png dist && cp src/icon32.png dist && cp src/icon48.png dist && cp src/icon128.png dist",
+    "build": "rm -rf dist && parcel build src/index.html --public-url ./ && cp manifest.json dist && cp src/icon16.png dist && cp src/icon32.png dist && cp src/icon48.png dist && cp src/icon128.png dist",
     "deploy": "yarn run build && push-dir --dir=dist --branch=gh-pages",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "author": "David Paulsson <david@davidpaulsson.se>",
   "license": "MIT",
   "dependencies": {
-    "babel-preset-env": "^1.6.1",
-    "classnames": "^2.2.5",
+    "classnames": "^2.2.6",
     "horunge": "^1.0.0",
     "lodash.orderby": "^4.6.0",
     "lodash.truncate": "^4.4.2",
-    "moment": "^2.21.0",
+    "moment": "^2.24.0",
     "no-class.css": "davidpaulsson/no-class",
-    "postcss-modules": "^1.1.0",
-    "react": "^16.2.0",
+    "postcss-modules": "^1.4.1",
+    "react": "^16.7.0",
     "react-click-outside": "^3.0.1",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.7.0",
     "react-entypo": "^1.3.0",
-    "react-loader-spinner": "^1.4.7",
-    "react-redux": "^5.0.7",
-    "react-select": "^1.2.1",
+    "react-loader-spinner": "^2.3.0",
+    "react-redux": "^5.1.1",
+    "react-select": "^1.3.0",
     "redux": "^3.7.2",
     "redux-localstorage": "^0.4.1",
-    "redux-thunk": "^2.2.0",
-    "remove-markdown": "^0.2.2",
+    "redux-thunk": "^2.3.0",
+    "remove-markdown": "^0.3.0",
     "rss-parser": "^3.6.2",
-    "sanitize-html": "^1.18.2",
+    "sanitize-html": "^1.20.0",
     "truncate": "^2.0.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.19.1",
-    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-jest": "^21.27.2",
     "eslint-plugin-react": "^7.7.0",
     "husky": "^0.14.3",
-    "jest": "^22.4.3",
-    "lint-staged": "^7.0.5",
-    "parcel-bundler": "^1.6.2",
-    "prettier": "1.11.1",
+    "jest": "^22.4.4",
+    "lint-staged": "^7.3.0",
+    "parcel-bundler": "^1.11.0",
+    "prettier": "1.16.4",
     "push-dir": "^0.4.1"
   }
 }
