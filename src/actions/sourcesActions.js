@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { defaultSerializer } from '../utils/serializer';
+import { defaultSerializer, githubSerializer } from '../utils/serializer';
 
 let Parser = require('rss-parser');
 let parser = new Parser();
@@ -12,6 +12,13 @@ export const fetchNews = feedUrl => {
     });
 
     const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+
+    if (feedUrl.includes('github')) {
+      fetch(CORS_PROXY + feedUrl)
+        .then(res => res.json())
+        .then(json => dispatch(receiveNews(githubSerializer(json), feedUrl)));
+      return;
+    }
 
     parser.parseURL(CORS_PROXY + feedUrl, function(err, feed) {
       if (err) {

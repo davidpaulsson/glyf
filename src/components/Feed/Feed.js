@@ -50,18 +50,17 @@ class Feed extends React.Component {
             <p>Oops.</p>
           </div>
         )}
-        {!isLoading &&
-          !isError && (
-            <div className="feed-items__wrapper">
-              {items.map((item, i) => (
-                <FeedItem
-                  details={details}
-                  item={item}
-                  key={`${item.link}__${i}`}
-                />
-              ))}
-            </div>
-          )}
+        {!isLoading && !isError && (
+          <div className="feed-items__wrapper">
+            {items.map((item, i) => (
+              <FeedItem
+                details={details}
+                item={item}
+                key={`${item.link}__${i}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
@@ -82,4 +81,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Feed);

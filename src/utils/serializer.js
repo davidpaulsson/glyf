@@ -28,6 +28,15 @@ const extractImageUri = item => {
     : null;
 };
 
+export const githubSerializer = json =>
+  json.map(item => ({
+    link: item.url,
+    title: item.name,
+    github: true,
+    ...item
+  }));
+
+
 export const defaultSerializer = json =>
   sortByDate(
     json.items.map(item => {
@@ -40,10 +49,10 @@ export const defaultSerializer = json =>
         image: item.enclosure ? item.enclosure.url : extractImageUri(item),
         description: item.content
           ? removeMd(
-              sanitizeHtml(item.content, {
-                allowedTags: [],
-              }).trim()
-            )
+            sanitizeHtml(item.content, {
+              allowedTags: [],
+            }).trim()
+          )
           : null,
       };
     })
