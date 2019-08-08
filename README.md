@@ -7,6 +7,8 @@
 
 [![Available in the Chrome Web Store](ChromeWebStore_Badge_v2_206x58.png)](https://chrome.google.com/webstore/detail/alla-nyheter/kklidjoiedcocpkddfnknenpkpcdalnp)
 
+[Glyf as a standalone website](https://davidpaulsson.github.io/glyf/)
+
 ## Sources
 
 Currently this extension load articles from the following news sources
