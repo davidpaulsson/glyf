@@ -37,7 +37,7 @@
     "redux-localstorage": "^0.4.1",
     "redux-thunk": "^2.3.0",
     "remove-markdown": "^0.3.0",
-    "rss-parser": "^3.6.2",
+    "rss-parser": "^3.7.2",
     "sanitize-html": "^1.20.0",
     "truncate": "^2.0.1"
   },
