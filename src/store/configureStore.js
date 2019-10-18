@@ -3,7 +3,10 @@ import persistState from 'redux-localstorage';
 import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
 
-const enhancer = compose(
+// eslint-disable-next-line no-undef
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const enhancer = composeEnhancer(
   applyMiddleware(thunk),
   persistState(['sourcesLayout', 'theme'])
 );
@@ -11,8 +14,6 @@ const enhancer = compose(
 const configureStore = () => {
   return createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__(),
     enhancer
   );
 };
