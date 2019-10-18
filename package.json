@@ -38,7 +38,7 @@
     "redux-thunk": "^2.3.0",
     "remove-markdown": "^0.3.0",
     "rss-parser": "^3.7.3",
-    "sanitize-html": "^1.20.0",
+    "sanitize-html": "^1.20.1",
     "truncate": "^2.0.1"
   },
   "devDependencies": {
