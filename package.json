@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "parcel src/index.html",
+    "start": "parcel src/index.html --no-source-maps",
     "build": "rm -rf dist && parcel build src/index.html --public-url ./ && cp manifest.json dist && cp src/icon16.png dist && cp src/icon32.png dist && cp src/icon48.png dist && cp src/icon128.png dist",
     "deploy": "yarn run build && push-dir --dir=dist --branch=gh-pages",
     "precommit": "lint-staged"
