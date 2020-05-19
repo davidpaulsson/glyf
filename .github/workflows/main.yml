@@ -24,6 +24,10 @@ jobs:
         with:
           cmd: build # will run `yarn build` command
 
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: cd dist && zip -r -X ../app.zip .
+
       - name: Upload & release
         uses: mnao305/chrome-extension-upload@1.1.0
         with:

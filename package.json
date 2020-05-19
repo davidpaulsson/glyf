@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "parcel src/index.html --no-source-maps",
-    "build": "rm -rf dist && parcel build src/index.html --no-source-maps --public-url ./ && cp manifest.json dist && cp src/icon16.png dist && cp src/icon32.png dist && cp src/icon48.png dist && cp src/icon128.png dist && yarn run zip",
+    "build": "rm -rf dist && parcel build src/index.html --no-source-maps --public-url ./ && cp manifest.json dist && cp src/icon16.png dist && cp src/icon32.png dist && cp src/icon48.png dist && cp src/icon128.png dist",
     "deploy": "yarn run build && push-dir --dir=dist --branch=gh-pages",
     "zip": "cd dist && zip -r -X ../app.zip .",
     "precommit": "lint-staged"
