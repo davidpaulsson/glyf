@@ -1,6 +1,6 @@
 import React from 'react';
 import { EntypoChevronDown, EntypoChevronUp } from 'react-entypo';
-import orderBy from 'lodash.orderBy';
+import orderBy from 'lodash.orderby';
 import { connect } from 'react-redux';
 import { changePosition } from '../../actions/sourcesLayoutActions';
 import Select from 'react-select';
@@ -60,4 +60,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(changePosition(ownProps.position, sourceId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FeedSelect);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FeedSelect);
