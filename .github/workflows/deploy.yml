@@ -3,7 +3,7 @@ name: deploy
 on:
   schedule:
     - cron: '*/10 * * * *'
-
+  
 jobs:
   build:
     name: Build and deploy to GitHub Pages
