@@ -1,4 +1,4 @@
-name: Build and deploy to Chrome Web Store
+name: publish
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build and deploy to Chrome Web Store
+    name: Build and publish to Chrome Web Store
     runs-on: ubuntu-latest
 
     steps:

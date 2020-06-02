@@ -1,8 +1,7 @@
-name: Build and deploy to GitHub Pages
+name: deploy
 
 on:
   schedule:
-    # trigger workflow every 10 minutes
     - cron: '*/10 * * * *'
 
 jobs:
