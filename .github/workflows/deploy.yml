@@ -1,9 +1,11 @@
 name: deploy
 
 on:
+  push:
+    - branches: master
   schedule:
-    - cron: '*/10 * * * *'
-  
+    - cron: '*/15 * * * *'
+
 jobs:
   build:
     name: Build and deploy to GitHub Pages
