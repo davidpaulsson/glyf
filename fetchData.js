@@ -114,7 +114,7 @@ const start = async () => {
     }
   });
 
-  fs.writeFile('./public/data.json', JSON.stringify(data), function (
+  fs.writeFile('./api/data.json', JSON.stringify(data), function (
     err,
     result
   ) {
