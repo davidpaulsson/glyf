@@ -26,6 +26,7 @@
     "lodash.truncate": "^4.4.2",
     "moment": "^2.24.0",
     "no-class.css": "davidpaulsson/no-class",
+    "node-fetch": "^2.6.0",
     "postcss-modules": "^1.4.1",
     "react": "^16.11.0",
     "react-click-outside": "^3.0.1",
