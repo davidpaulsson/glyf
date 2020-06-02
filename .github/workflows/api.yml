@@ -1,0 +1,32 @@
+name: API
+
+on:
+  push:
+    branches: [v1]
+
+jobs:
+  build:
+    name: Build API
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # will run `yarn install` command
+
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: api # will run `yarn build` command
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: api
