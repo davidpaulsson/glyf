@@ -1,4 +1,6 @@
 .cache
 dist
+build
 node_modules
 app.zip
+public/data.json
