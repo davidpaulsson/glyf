@@ -1,0 +1,37 @@
+.wrapper {
+  margin: 8px;
+  padding: 8px;
+
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-base);
+}
+
+.wrapper:hover .title {
+  color: var(--color-text);
+}
+
+.title {
+  margin-bottom: 8px;
+
+  color: var(--color-inverse);
+
+  font-weight: bold;
+}
+
+.preamble {
+  margin-bottom: 8px;
+}
+
+.meta {
+  display: flex;
+
+  font-size: 0.8em;
+}
+
+.meta div {
+  margin-right: 8px;
+}
+
+.meta div:last-child {
+  margin-right: unset;
+}

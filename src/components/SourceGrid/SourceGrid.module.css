@@ -1,0 +1,9 @@
+.grid {
+  display: grid;
+
+  grid-template-rows:
+    calc(50vh - (var(--header-height) / 2) - 1px)
+    calc(50vh - (var(--header-height) / 2) - 1px);
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+}

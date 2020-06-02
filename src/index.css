@@ -1,0 +1,45 @@
+:root {
+  --header-height: 40px;
+
+  --color-base: #fff;
+  --color-inverse: #404040;
+  --color-border: #e8ecee;
+  --color-primary: #2399ff;
+  --color-background: #f4f8fb;
+  --color-text: #737373;
+}
+
+html,
+body {
+  overflow: hidden;
+
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-10);
+}
+
+a:hover {
+  color: var(--color-7);
+}
