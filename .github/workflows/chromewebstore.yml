@@ -1,38 +1,38 @@
-# name: Build and deploy to Chrome Web Store
+name: Build and deploy to Chrome Web Store
 
-# on:
-#   push:
-#     branches: [master]
+on:
+  push:
+    branches: [master]
 
-# jobs:
-#   build:
-#     name: Build and deploy to Chrome Web Store
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    name: Build and deploy to Chrome Web Store
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - uses: actions/checkout@v1
+    steps:
+      - uses: actions/checkout@v1
 
-#       - uses: actions/setup-node@v1
-#         with:
-#           node-version: 12
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
 
-#       - uses: borales/actions-yarn@v2.0.0
-#         with:
-#           cmd: install
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
 
-#       - uses: borales/actions-yarn@v2.0.0
-#         with:
-#           cmd: build
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build
 
-#       - uses: montudor/action-zip@v0.1.0
-#         with:
-#           args: zip -qq -r ./app.zip ./build
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./app.zip ./build
 
-#       - name: Upload & release
-#         uses: mnao305/chrome-extension-upload@1.1.0
-#         with:
-#           file-path: app.zip
-#           extension-id: kklidjoiedcocpkddfnknenpkpcdalnp
-#           client-id: ${{ secrets.CLIENT_ID }}
-#           client-secret: ${{ secrets.CLIENT_SECRET }}
-#           refresh-token: ${{ secrets.REFRESH_TOKEN }}
+      - name: Upload & release
+        uses: mnao305/chrome-extension-upload@1.1.0
+        with:
+          file-path: app.zip
+          extension-id: kklidjoiedcocpkddfnknenpkpcdalnp
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}
