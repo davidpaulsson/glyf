@@ -1,12 +1,13 @@
-name: API
+name: Build and deploy to GitHub Pages
 
 on:
-  push:
-    branches: [v1]
+  schedule:
+    # trigger workflow every 10 minutes
+    - cron: '*/10 * * * *'
 
 jobs:
   build:
-    name: Build API
+    name: Build and deploy to GitHub Pages
     runs-on: ubuntu-latest
 
     steps:
@@ -18,15 +19,19 @@ jobs:
 
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install # will run `yarn install` command
+          cmd: install
 
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: api # will run `yarn build` command
+          cmd: api
+
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: api
+          FOLDER: build

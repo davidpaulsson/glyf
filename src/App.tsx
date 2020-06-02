@@ -19,7 +19,7 @@ const App = () => {
     const fetchData = async () => {
       const {
         data: { sources },
-      } = await axios.get('./data.json');
+      } = await axios.get('https://davidpaulsson.se/glyf/data.json');
 
       dispatch({ type: Action.ADD_SOURCES, sources });
     };

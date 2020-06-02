@@ -1,4 +1,4 @@
-name: Publish
+name: Build and deploy to Chrome Web Store
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Publish webextension
+    name: Build and deploy to Chrome Web Store
     runs-on: ubuntu-latest
 
     steps:
@@ -18,15 +18,15 @@ jobs:
 
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install # will run `yarn install` command
+          cmd: install
 
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: build # will run `yarn build` command
+          cmd: build
 
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./app.zip ./dist
+          args: zip -qq -r ./app.zip ./build
 
       - name: Upload & release
         uses: mnao305/chrome-extension-upload@1.1.0

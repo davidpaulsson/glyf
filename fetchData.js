@@ -18,6 +18,7 @@ const sources = [
 ];
 
 const data = {
+  updatedAt: moment().toDate(),
   sources: [],
 };
 
@@ -114,7 +115,7 @@ const start = async () => {
     }
   });
 
-  fs.writeFile('./api/data.json', JSON.stringify(data), function (
+  fs.writeFile('./public/data.json', JSON.stringify(data), function (
     err,
     result
   ) {
