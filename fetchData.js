@@ -73,7 +73,8 @@ const extractImageUri = (item) => {
 };
 
 const truncateString = (str) => {
-  if (str.length <= 150) {
+  const num = 150;
+  if (str.length <= num) {
     return str;
   }
   return str.slice(0, num) + '…';
