@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styles from './Header.module.css';
-import { Link } from '@reach/router';
+import { CurrentPage } from '../../types';
 
-const Header = () => (
+interface HeaderProps {
+  setCurrentPage: Dispatch<SetStateAction<CurrentPage>>;
+}
+
+const Header = ({ setCurrentPage }: HeaderProps) => (
   <header className={styles.header}>
     <nav>
-      <Link to="/">Home</Link> <Link to="settings">Settings</Link>
+      <ul className={styles.ul}>
+        <li>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setCurrentPage(CurrentPage.NEWS);
+            }}
+          >
+            News
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setCurrentPage(CurrentPage.SETTINGS);
+            }}
+          >
+            Settings
+          </a>
+        </li>
+      </ul>
     </nav>
   </header>
 );
-
 export default Header;

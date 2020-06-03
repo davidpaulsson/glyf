@@ -3,3 +3,7 @@
 
   line-height: var(--header-height);
 }
+
+.ul li {
+  display: inline-block;
+}

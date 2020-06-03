@@ -2,9 +2,7 @@
   "name": "glyf-v2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://davidpaulsson.se/glyf",
   "dependencies": {
-    "@reach/router": "^1.3.3",
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

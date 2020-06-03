@@ -30,3 +30,8 @@ export enum Action {
   SET_STATUS = 'SET_STATUS',
   ADD_SOURCES = 'ADD_SOURCES',
 }
+
+export enum CurrentPage {
+  NEWS = 'NEWS',
+  SETTINGS = 'SETTINGS',
+}

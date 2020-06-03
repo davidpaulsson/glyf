@@ -1,18 +1,14 @@
-import { RouteComponentProps, Router } from '@reach/router';
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './App.module.css';
 import Header from './components/Header';
 import SourcesGrid from './components/SourceGrid';
-import { Action, Status } from './types';
-
-const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-
-const News = (props: RouteComponentProps) => <SourcesGrid />;
-const Settings = (props: RouteComponentProps) => <p>Settings</p>;
+import { Action, Status, CurrentPage } from './types';
 
 const App = () => {
+  const [currentPage, setCurrentPage] = useState(CurrentPage.NEWS);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,11 +27,9 @@ const App = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Header />
-      <Router>
-        <News path={isDev ? '/' : 'glyf/'} />
-        <Settings path={isDev ? 'settings' : '/glyf/settings'} />
-      </Router>
+      <Header setCurrentPage={setCurrentPage} />
+      {currentPage === CurrentPage.NEWS && <SourcesGrid />}
+      {currentPage === CurrentPage.SETTINGS && <p>Settings</p>}
     </div>
   );
 };
