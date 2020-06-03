@@ -31,8 +31,8 @@ const App = () => {
     <div className={styles.wrapper}>
       <Header />
       <Router basepath="/glyf">
-        <News path="/" />
-        <Settings path="settings" />
+        <News path={`${process.env.PUBLIC_URL}/`} />
+        <Settings path={`${process.env.PUBLIC_URL}/settings`} />
       </Router>
     </div>
   );
