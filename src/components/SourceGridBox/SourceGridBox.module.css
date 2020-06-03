@@ -11,7 +11,8 @@
 
 .gridItemScrollable {
   display: grid;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   flex: 1;
 
   grid-template-rows: auto;

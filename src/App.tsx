@@ -30,7 +30,7 @@ const App = () => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      <Router>
+      <Router basepath="/glyf">
         <News path="/" />
         <Settings path="settings" />
       </Router>
