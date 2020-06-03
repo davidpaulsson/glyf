@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../configureStore';
-import { SourcesState, Status } from '../../types';
+import { SourcesState, Source, Status } from '../../types';
 import styles from './SourceGrid.module.css';
 import SourceGridBox from '../SourceGridBox';
 
@@ -17,8 +17,8 @@ const SourceGrid = () => {
   if (status === Status.IDLE) {
     return (
       <div className={styles.grid}>
-        {sources.map(({ title, items }) => (
-          <SourceGridBox key={title} {...{ title, items }} />
+        {sources.map((source: Source) => (
+          <SourceGridBox key={source.title} {...source} />
         ))}
       </div>
     );
