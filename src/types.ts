@@ -9,6 +9,7 @@ export interface SourceItem {
 
 export interface Source {
   title: string;
+  domain: string;
   items: SourceItem[];
 }
 

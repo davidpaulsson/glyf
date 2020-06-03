@@ -11,9 +11,21 @@ const sanitizeHtml = require('sanitize-html');
 const removeMd = require('remove-markdown');
 
 const sources = [
-  { title: 'Github', api: 'https://github-trending-api.now.sh' },
-  { title: 'Product Hunt', api: 'https://www.producthunt.com/feed' },
-  { title: 'Designer News', api: 'https://www.designernews.co/?format=rss' },
+  {
+    title: 'Github',
+    domain: 'github.com',
+    api: 'https://github-trending-api.now.sh',
+  },
+  {
+    title: 'Product Hunt',
+    domain: 'producthunt.com',
+    api: 'https://www.producthunt.com/feed',
+  },
+  {
+    title: 'Designer News',
+    domain: 'designernews.co',
+    api: 'https://www.designernews.co/?format=rss',
+  },
 ];
 
 const data = {
@@ -105,17 +117,19 @@ const asyncForEach = async (array, callback) => {
 };
 
 const start = async () => {
-  await asyncForEach(sources, async ({ title, api }) => {
+  await asyncForEach(sources, async ({ title, domain, api }) => {
     if (title === 'Github') {
       const resp = await axios.get(api);
       data.sources.push({
         title,
+        domain,
         items: normalize({ title, data: resp.data }),
       });
     } else {
       const resp = await parser.parseURL(api);
       data.sources.push({
         title,
+        domain,
         items: sortByDate(normalize({ title, data: resp.items })),
       });
     }
