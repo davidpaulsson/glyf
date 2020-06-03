@@ -7,6 +7,8 @@ import Header from './components/Header';
 import SourcesGrid from './components/SourceGrid';
 import { Action, Status } from './types';
 
+const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
 const News = (props: RouteComponentProps) => <SourcesGrid />;
 const Settings = (props: RouteComponentProps) => <p>Settings</p>;
 
@@ -30,9 +32,9 @@ const App = () => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      <Router basepath="/glyf">
-        <News path={`${process.env.PUBLIC_URL}/`} />
-        <Settings path={`${process.env.PUBLIC_URL}/settings`} />
+      <Router>
+        <News path={isDev ? '/' : 'glyf/'} />
+        <Settings path={isDev ? 'settings' : '/glyf/settings'} />
       </Router>
     </div>
   );
