@@ -11,26 +11,28 @@ const Header = ({ setCurrentPage }: HeaderProps) => (
     <nav>
       <ul className={styles.ul}>
         <li>
-          <a
-            href="#"
+          <button
+            type="button"
+            className={styles.linkButton}
             onClick={(e) => {
               e.preventDefault();
               setCurrentPage(CurrentPage.NEWS);
             }}
           >
             News
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            href="#"
+          <button
+            type="button"
+            className={styles.linkButton}
             onClick={(e) => {
               e.preventDefault();
               setCurrentPage(CurrentPage.SETTINGS);
             }}
           >
             Settings
-          </a>
+          </button>
         </li>
       </ul>
     </nav>

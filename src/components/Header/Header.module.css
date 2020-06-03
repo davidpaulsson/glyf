@@ -7,3 +7,21 @@
 .ul li {
   display: inline-block;
 }
+
+.linkButton {
+  display: inline;
+
+  margin: 0;
+  padding: 0;
+
+  cursor: pointer;
+  text-decoration: underline;
+
+  border: none;
+  background-color: transparent;
+}
+
+.linkButton:hover,
+.linkButton:focus {
+  text-decoration: none;
+}
