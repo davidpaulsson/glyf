@@ -1,6 +1,5 @@
 const fs = require('fs');
 const axios = require('axios');
-const path = require('path');
 const orderBy = require('lodash.orderby');
 
 const moment = require('moment');
@@ -61,13 +60,20 @@ const extractImageUri = (item) => {
     : null;
 };
 
+const truncateString = (str) => {
+  if (str.length <= 150) {
+    return str;
+  }
+  return str.slice(0, num) + '…';
+};
+
 const normalize = ({ title, data }) => {
   switch (title) {
     case 'Github':
       return data.map((d) => ({
         title: fixTitle(d.name),
         url: d.url,
-        preamble: stripHtml(d.description),
+        preamble: truncateString(stripHtml(d.description)),
         language: d.language,
         stars: d.stars,
         author: d.author,
@@ -77,7 +83,7 @@ const normalize = ({ title, data }) => {
       return data.map((d) => ({
         title: fixTitle(d.title),
         url: d.link,
-        preamble: stripHtml(d.content),
+        preamble: truncateString(stripHtml(d.content)),
         published: moment(d.pubDate).calendar(),
         sortDate: moment(d.pubDate).toDate(),
         image: d.enclosure ? d.enclosure.url : extractImageUri(d),
