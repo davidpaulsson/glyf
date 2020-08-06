@@ -3,7 +3,7 @@ name: deploy
 on:
   push:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '0 08 * * *'
 
 jobs:
   build:
