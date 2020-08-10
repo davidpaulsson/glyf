@@ -1,0 +1,18 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons button:last-child {
+  margin-left: var(--spacing);
+}
+
+button {
+  color: var(--color-secondary);
+}
+
+button.active,
+button:hover {
+  color: var(--color-text);
+}

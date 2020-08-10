@@ -1,0 +1,10 @@
+.grid {
+  display: grid;
+
+  height: 100vh;
+  max-height: 100vh;
+  padding: var(--spacing);
+
+  gap: var(--spacing);
+  grid-template-rows: auto 1fr;
+}

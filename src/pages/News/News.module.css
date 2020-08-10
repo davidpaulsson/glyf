@@ -1,0 +1,13 @@
+.list {
+  display: grid;
+
+  height: 100%;
+
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+  grid-template-rows: repeat(2, minmax(0px, 1fr));
+  gap: var(--spacing);
+}
+
+.list__item {
+  background-color: blue;
+}
