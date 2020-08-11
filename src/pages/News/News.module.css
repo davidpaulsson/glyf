@@ -1,7 +1,8 @@
 .list {
   display: grid;
+  overflow: hidden;
 
-  height: 100%;
+  max-height: 100%;
 
   grid-template-columns: repeat(3, minmax(0px, 1fr));
   grid-template-rows: repeat(2, minmax(0px, 1fr));
@@ -9,5 +10,16 @@
 }
 
 .list__item {
-  background-color: blue;
+  overflow: scroll;
+}
+
+.title {
+  position: sticky;
+  top: 0;
+
+  margin-bottom: var(--spacing);
+  padding-bottom: var(--spacing);
+
+  border-bottom: 1px solid var(--color-inverse-2);
+  background-color: var(--color-inverse);
 }

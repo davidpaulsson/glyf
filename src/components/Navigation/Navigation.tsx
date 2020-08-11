@@ -4,6 +4,8 @@ import { actions, routes, store } from '../../store';
 import IconArticle from '../IconArticle';
 import IconOptions from '../IconOptions';
 import styles from './Navigation.module.css';
+import IconSun from '../IconSun';
+import IconMoon from '../IconMoon';
 
 const Navigation: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -32,6 +34,23 @@ const Navigation: React.FC = () => {
         >
           <IconOptions />
         </button>
+        {state.settings.isDarkMode ? (
+          <button
+            onClick={() =>
+              dispatch({ type: actions.SET_IS_DARK_MODE, payload: false })
+            }
+          >
+            <IconSun />
+          </button>
+        ) : (
+          <button
+            onClick={() =>
+              dispatch({ type: actions.SET_IS_DARK_MODE, payload: true })
+            }
+          >
+            <IconMoon />
+          </button>
+        )}
       </div>
     </nav>
   );

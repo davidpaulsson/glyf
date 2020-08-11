@@ -2,17 +2,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
-.buttons button:last-child {
-  margin-left: var(--spacing);
+  padding-bottom: var(--spacing);
+
+  border-bottom: 1px solid var(--color-inverse-2);
 }
 
 button {
-  color: var(--color-secondary);
+  margin-left: var(--spacing);
+
+  color: var(--color-text-3);
 }
 
-button.active,
 button:hover {
+  color: var(--color-text-2);
+}
+
+button.active {
   color: var(--color-text);
 }

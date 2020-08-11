@@ -1,0 +1,41 @@
+.link {
+  display: block;
+}
+
+.link:hover .title {
+  text-decoration: line-through;
+}
+.link:hover .preamble {
+  color: var(--color-text);
+}
+
+.link:visited .title,
+.link:visited .preamble,
+.link:visited .published {
+  text-decoration: line-through;
+
+  color: var(--color-text-3);
+}
+
+.item {
+  margin-bottom: calc(var(--spacing) * 3);
+}
+
+.item:hover {
+}
+
+.preamble {
+  color: var(--color-text-2);
+
+  font-size: 1rem;
+}
+
+.published {
+  display: block;
+
+  margin-top: var(--spacing);
+
+  color: var(--color-text-2);
+
+  font-size: 0.8rem;
+}

@@ -9,6 +9,22 @@ export enum actions {
   NAVIGATE,
   SET_OPEN_LINKS_IN_NEW_TAB,
   SET_IS_DARK_MODE,
+  SET_SOURCES,
+}
+
+export interface IItem {
+  title: string;
+  description: string;
+  preamble: string;
+  published: string;
+  sortDate: string;
+  url: string;
+}
+
+interface ISource {
+  domain: string;
+  items: IItem[];
+  title: string;
 }
 
 interface IState {
@@ -18,6 +34,10 @@ interface IState {
   settings: {
     openLinksInNewTab: boolean;
     isDarkMode: boolean;
+  };
+  sources: {
+    sources: ISource[];
+    updatedAt: string | null;
   };
 }
 
@@ -33,6 +53,10 @@ const initialState = {
   settings: {
     openLinksInNewTab: false,
     isDarkMode: false,
+  },
+  sources: {
+    sources: [],
+    updatedAt: null,
   },
 };
 
@@ -70,6 +94,11 @@ const StateProvider: React.FC = ({ children }) => {
               ...state.settings,
               isDarkMode: action.payload,
             },
+          };
+        case actions.SET_SOURCES:
+          return {
+            ...state,
+            sources: action.payload,
           };
         default:
           return state;

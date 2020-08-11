@@ -11,6 +11,7 @@ const Layout: React.FC = ({ children }) => {
       className={classNames({
         [styles.grid]: true,
         [styles.options]: state.navigation.currentRoute === routes.SETTINGS,
+        darkMode: state.settings.isDarkMode,
       })}
     >
       {children}

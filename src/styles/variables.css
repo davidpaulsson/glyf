@@ -1,5 +1,22 @@
 :root {
   --spacing: 8px;
   --color-text: #000;
-  --color-secondary: #666;
+  --color-text-1: #333;
+  --color-text-2: #666;
+  --color-text-3: #999;
+  --color-inverse: #fff;
+  --color-inverse-1: #eee;
+  --color-inverse-2: #ddd;
+  --color-inverse-3: #ccc;
+}
+
+.darkMode {
+  --color-text: #fff;
+  --color-text-1: #ddd;
+  --color-text-2: #ccc;
+  --color-text-3: #aaa;
+  --color-inverse: #000;
+  --color-inverse-1: #333;
+  --color-inverse-2: #666;
+  --color-inverse-3: #999;
 }

@@ -1,12 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import News from '../pages/News';
 import Settings from '../pages/Settings';
-import { routes, store } from '../store';
+import { routes, store, actions } from '../store';
 import Layout from './Layout';
 import Navigation from './Navigation';
 
 function App() {
-  const { state } = useContext(store);
+  const { state, dispatch } = useContext(store);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const response = await fetch('https://davidpaulsson.se/glyf/data.json');
+      if (response.status >= 200 && response.status <= 299) {
+        const jsonResponse = await response.json();
+        dispatch({
+          type: actions.SET_SOURCES,
+          payload: jsonResponse,
+        });
+      } else {
+        // Handle errors
+        console.log(response.status, response.statusText);
+      }
+    };
+
+    fetchArticles();
+  }, [dispatch]);
 
   return (
     <Layout>
