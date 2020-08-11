@@ -7,13 +7,12 @@ const News: React.FC = () => {
   const { state } = useContext(store);
   return (
     <main className={styles.list}>
-      {state.sources.sources.map((source) => (
-        <section className={styles.list__item}>
+      {state.sources.sources.map((source, index) => (
+        <section key={index} className={styles.list__item}>
           <h2 className={styles.title}>{source.title}</h2>
-
           <ul>
-            {source.items.map((item) => (
-              <NewsItem {...{ item }} />
+            {source.items.map((item, index) => (
+              <NewsItem key={index} {...{ item }} />
             ))}
           </ul>
         </section>

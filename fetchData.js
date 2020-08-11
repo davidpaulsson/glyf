@@ -26,6 +26,66 @@ const sources = [
     domain: 'designernews.co',
     api: 'https://www.designernews.co/?format=rss',
   },
+  {
+    title: 'Hacker News',
+    domain: 'hnrss.org',
+    api: 'https://hnrss.org/newest',
+  },
+  {
+    title: 'Dagens Media',
+    domain: 'dagensmedia.se',
+    api: 'https://www.dagensmedia.se/rss.xml',
+  },
+  {
+    title: 'Veckans Affärer',
+    domain: 'va.se',
+    api: 'https://www.va.se/rss',
+  },
+  {
+    title: 'Resume',
+    domain: 'resume.se',
+    api: 'https://www.resume.se/rss-nyheter',
+  },
+  {
+    title: 'Breakit',
+    domain: 'breakit.se',
+    api: 'https://www.breakit.se/feed/artiklar',
+  },
+  {
+    title: 'Dagens Industri',
+    domain: 'di.se',
+    api: 'https://www.di.se/rss',
+  },
+  {
+    title: 'Aftonbladet',
+    domain: 'aftonbladet.se',
+    api: 'https://www.aftonbladet.se/rss.xml',
+  },
+  {
+    title: 'Dagens Nyheter',
+    domain: 'dn.se',
+    api: 'https://www.dn.se/nyheter/m/rss',
+  },
+  {
+    title: 'Expressen',
+    domain: 'expressen.se',
+    api: 'https://feeds.expressen.se',
+  },
+  {
+    title: 'SVT Nyheter',
+    domain: 'svt.se',
+    api: 'https://www.svt.se/nyheter/rss.xml',
+  },
+  {
+    title: 'Svenska Dagbladet',
+    domain: 'svd.se',
+    api: 'https://www.svd.se/?service=rss',
+  },
+  {
+    title: 'Sveriges Radio Ekot',
+    domain: 'sverigesradio.se/ekot',
+    api: 'https://api.sr.se/api/rss/program/83?format=145',
+  },
 ];
 
 const data = {
@@ -73,6 +133,9 @@ const extractImageUri = (item) => {
 };
 
 const truncateString = (str) => {
+  if (str === null) {
+    return null;
+  }
   const num = 150;
   if (str.length <= num) {
     return str;
