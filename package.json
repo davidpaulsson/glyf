@@ -11,17 +11,24 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "lodash.orderby": "^4.6.0",
+    "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "remove-markdown": "^0.3.0",
+    "rss-parser": "^3.9.0",
+    "sanitize-html": "^1.27.2",
     "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "api": "node fetchData.js"
   },
   "eslintConfig": {
     "extends": "react-app"
