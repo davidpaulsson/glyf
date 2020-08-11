@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, useReducer } from 'react';
+import React, { createContext, Dispatch, useReducer, useEffect } from 'react';
 
 export enum routes {
   NEWS,
@@ -46,7 +46,9 @@ interface IContext {
   state: IState;
 }
 
-const initialState = {
+const initialState = JSON.parse(
+  localStorage.getItem('GlyfStore') as string
+) || {
   navigation: {
     currentRoute: routes.NEWS,
   },
@@ -106,6 +108,10 @@ const StateProvider: React.FC = ({ children }) => {
     },
     initialState
   );
+
+  useEffect(() => {
+    localStorage.setItem('GlyfStore', JSON.stringify(state));
+  }, [state]);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
