@@ -65,6 +65,6 @@
     "prettier-eslint-cli": "^5.0.0",
     "remove-markdown": "^0.3.0",
     "rss-parser": "^3.8.0",
-    "sanitize-html": "^1.25.0"
+    "sanitize-html": "^1.27.3"
   }
 }
