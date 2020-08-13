@@ -21,9 +21,6 @@
   margin-bottom: calc(var(--spacing) * 3);
 }
 
-.item:hover {
-}
-
 .preamble {
   color: var(--color-text-2);
 
@@ -31,11 +28,28 @@
 }
 
 .published {
-  display: block;
+  display: flex;
+  align-items: center;
 
   margin-top: var(--spacing);
 
   color: var(--color-text-2);
 
   font-size: 0.8rem;
+}
+
+.published svg {
+  margin-right: calc(var(--spacing) / 2);
+}
+
+.star {
+  margin-right: calc(var(--spacing) / 3);
+
+  transform: scale(0.7);
+}
+
+.spacer {
+  display: block;
+
+  width: var(--spacing);
 }

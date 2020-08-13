@@ -10,17 +10,20 @@ import IconMoon from '../IconMoon';
 const Navigation: React.FC = () => {
   const { state, dispatch } = useContext(store);
 
+  const goToNews = () =>
+    dispatch({ type: actions.NAVIGATE, payload: routes.NEWS });
+
   return (
     <nav className={styles.nav}>
-      <h1>Glyf</h1>
+      <button onClick={goToNews}>
+        <h1>Glyf</h1>
+      </button>
       <div className={styles.buttons}>
         <button
           className={classNames({
             [styles.active]: state.navigation.currentRoute === routes.NEWS,
           })}
-          onClick={() =>
-            dispatch({ type: actions.NAVIGATE, payload: routes.NEWS })
-          }
+          onClick={goToNews}
         >
           <IconArticle />
         </button>

@@ -3,15 +3,19 @@
   align-items: center;
   justify-content: space-between;
 
-  padding-bottom: var(--spacing);
-
-  border-bottom: 1px solid var(--color-inverse-2);
+  padding-bottom: calc(var(--spacing) * 2);
 }
 
 button {
   margin-left: var(--spacing);
 
   color: var(--color-text-3);
+}
+
+button:first-child {
+  margin-left: unset;
+
+  color: var(--color-text);
 }
 
 button:hover {

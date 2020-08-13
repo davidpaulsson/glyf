@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { IItem, store } from '../../store';
 import styles from './NewsItem.module.css';
+import IconCalendar from '../../components/IconCalendar';
+import IconUser from '../../components/IconUser';
+import IconCode from '../../components/IconCode';
 
 const NewsItem = ({ item }: { item: IItem }) => {
   const { state } = useContext(store);
@@ -17,7 +20,37 @@ const NewsItem = ({ item }: { item: IItem }) => {
       >
         <h3 className={styles.title}>{item.title}</h3>
         <span className={styles.preamble}>{item.preamble}</span>
-        <small className={styles.published}>{item.published}</small>
+        {!!item.github ? (
+          <small className={styles.published}>
+            {item.language && (
+              <>
+                <IconCode />
+                {item.language}
+                <div className={styles.spacer} />
+              </>
+            )}
+            {item.author && (
+              <>
+                <IconUser />
+                {item.author}
+                <div className={styles.spacer} />
+              </>
+            )}
+            {item.stars && (
+              <>
+                <span className={styles.star}>★</span>
+                {item.stars}
+              </>
+            )}
+          </small>
+        ) : (
+          item.published && (
+            <small className={styles.published}>
+              <IconCalendar />
+              {item.published}
+            </small>
+          )
+        )}
       </a>
     </li>
   );

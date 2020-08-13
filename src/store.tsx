@@ -16,9 +16,13 @@ export interface IItem {
   title: string;
   description: string;
   preamble: string;
-  published: string;
+  published?: string;
   sortDate: string;
   url: string;
+  github?: boolean;
+  language?: string;
+  author?: string;
+  stars?: number;
 }
 
 export interface ISource {

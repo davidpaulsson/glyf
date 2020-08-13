@@ -6,9 +6,6 @@ import NewsItem from './NewsItem';
 const News: React.FC = () => {
   const { state } = useContext(store);
 
-  console.log('state.sources.sources', state.sources.sources);
-  console.log('state.settings', state.settings.selectedSources);
-
   return (
     <main className={styles.list}>
       {state.settings.selectedSources.map((domain) => {
