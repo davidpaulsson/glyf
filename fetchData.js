@@ -37,14 +37,9 @@ const sources = [
     api: 'https://www.dagensmedia.se/rss.xml',
   },
   {
-    title: 'Veckans Affärer',
-    domain: 'va.se',
-    api: 'https://www.va.se/rss',
-  },
-  {
     title: 'Resume',
     domain: 'resume.se',
-    api: 'https://www.resume.se/rss-nyheter',
+    api: 'https://www.resume.se/rss.xml',
   },
   {
     title: 'Breakit',
