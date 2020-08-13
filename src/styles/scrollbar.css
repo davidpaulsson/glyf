@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+  width: calc(var(--spacing) / 2);
+}
+
+::-webkit-scrollbar-thumb {
+  position: relative;
+  z-index: 999;
+
+  border-radius: calc(var(--spacing) / 2);
+  background-color: var(--color-text-3);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-inverse);
+}

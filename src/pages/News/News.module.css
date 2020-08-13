@@ -10,7 +10,7 @@
 }
 
 .list__item {
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .title {

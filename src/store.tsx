@@ -21,7 +21,7 @@ export interface IItem {
   url: string;
 }
 
-interface ISource {
+export interface ISource {
   domain: string;
   items: IItem[];
   title: string;
@@ -34,6 +34,7 @@ interface IState {
   settings: {
     openLinksInNewTab: boolean;
     isDarkMode: boolean;
+    selectedSources: string[];
   };
   sources: {
     sources: ISource[];
@@ -55,6 +56,7 @@ const initialState = JSON.parse(
   settings: {
     openLinksInNewTab: false,
     isDarkMode: false,
+    selectedSources: [],
   },
   sources: {
     sources: [],
@@ -68,6 +70,8 @@ const store = createContext<IContext>({
 });
 
 const { Provider } = store;
+
+const take = (arr: ISource[], qty = 1) => [...arr].splice(0, qty);
 
 const StateProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(
@@ -101,6 +105,12 @@ const StateProvider: React.FC = ({ children }) => {
           return {
             ...state,
             sources: action.payload,
+            settings: {
+              ...state.settings,
+              selectedSources: take(action.payload.sources, 6).map(
+                (source: { domain: string }) => source.domain
+              ),
+            },
           };
         default:
           return state;
