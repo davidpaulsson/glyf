@@ -13,6 +13,8 @@ const Navigation: React.FC = () => {
   const goToNews = () =>
     dispatch({ type: actions.NAVIGATE, payload: routes.NEWS });
 
+  console.log('state.navigation.currentRoute', state.navigation.currentRoute);
+
   return (
     <nav className={styles.nav}>
       <button onClick={goToNews}>

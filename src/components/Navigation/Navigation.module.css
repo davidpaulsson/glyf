@@ -6,16 +6,16 @@
   padding-bottom: calc(var(--spacing) * 2);
 }
 
+.nav > button:first-child {
+  margin-left: unset;
+
+  color: var(--color-text);
+}
+
 button {
   margin-left: var(--spacing);
 
   color: var(--color-text-3);
-}
-
-button:first-child {
-  margin-left: unset;
-
-  color: var(--color-text);
 }
 
 button:hover {

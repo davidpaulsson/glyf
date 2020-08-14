@@ -1,0 +1,35 @@
+.section {
+  overflow-y: scroll;
+}
+
+.title {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: var(--spacing);
+  padding-right: var(--spacing);
+  padding-bottom: var(--spacing);
+
+  border-bottom: 1px solid var(--color-inverse-2);
+  background-color: var(--color-inverse);
+}
+
+.title h2 span {
+  color: var(--color-text-3);
+}
+
+.title button {
+  display: flex;
+
+  color: var(--color-text-1);
+}
+.title button:hover {
+  display: flex;
+
+  color: var(--color-text);
+}

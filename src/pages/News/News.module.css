@@ -8,19 +8,3 @@
   grid-template-rows: repeat(2, minmax(0px, 1fr));
   gap: var(--spacing);
 }
-
-.list__item {
-  overflow-y: scroll;
-}
-
-.title {
-  position: sticky;
-  z-index: 1;
-  top: 0;
-
-  margin-bottom: var(--spacing);
-  padding-bottom: var(--spacing);
-
-  border-bottom: 1px solid var(--color-inverse-2);
-  background-color: var(--color-inverse);
-}

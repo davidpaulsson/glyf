@@ -1,30 +1,21 @@
 import React, { useContext } from 'react';
-import { store, ISource } from '../../store';
+import { ISource, store } from '../../store';
 import styles from './News.module.css';
-import NewsItem from './NewsItem';
+import NewsSection from './NewsSection';
 
-const News: React.FC = () => {
+const News = () => {
   const { state } = useContext(store);
 
   return (
     <main className={styles.list}>
-      {state.settings.selectedSources.map((domain) => {
+      {state.settings.selectedSources.map((domain, index) => {
         const source: ISource | undefined = state.sources.sources.find(
           (source) => source.domain === domain
         );
 
         if (!source) return false;
 
-        return (
-          <section key={domain} className={styles.list__item}>
-            <h2 className={styles.title}>{source.title}</h2>
-            <ul>
-              {source.items.map((item, index) => (
-                <NewsItem key={index} {...{ item }} />
-              ))}
-            </ul>
-          </section>
-        );
+        return <NewsSection key={index} {...{ source, index }} />;
       })}
     </main>
   );

@@ -10,6 +10,7 @@ export enum actions {
   SET_OPEN_LINKS_IN_NEW_TAB,
   SET_IS_DARK_MODE,
   SET_SOURCES,
+  SET_SOURCE,
 }
 
 export interface IItem {
@@ -60,7 +61,7 @@ const initialState = JSON.parse(
   settings: {
     openLinksInNewTab: false,
     isDarkMode: false,
-    selectedSources: [],
+    selectedSources: null,
   },
   sources: {
     sources: [],
@@ -111,8 +112,23 @@ const StateProvider: React.FC = ({ children }) => {
             sources: action.payload,
             settings: {
               ...state.settings,
-              selectedSources: take(action.payload.sources, 6).map(
-                (source: { domain: string }) => source.domain
+              selectedSources: state.settings.selectedSources
+                ? state.settings.selectedSources
+                : take(action.payload.sources, 6).map(
+                    (source: { domain: string }) => source.domain
+                  ),
+            },
+          };
+        case actions.SET_SOURCE:
+          return {
+            ...state,
+            settings: {
+              ...state.settings,
+              selectedSources: state.settings.selectedSources.map(
+                (source, index) =>
+                  index === action.payload.index
+                    ? action.payload.source
+                    : source
               ),
             },
           };
