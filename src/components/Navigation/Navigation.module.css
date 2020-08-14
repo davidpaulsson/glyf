@@ -12,6 +12,27 @@
   color: var(--color-text);
 }
 
+.nav h1,
+.nav h1 span {
+  display: flex;
+  align-items: center;
+}
+
+.nav h1 span svg {
+  margin: 0 calc(var(--spacing) / 2) 0 var(--spacing);
+
+  animation: rotation 1s infinite ease;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 button {
   margin-left: var(--spacing);
 

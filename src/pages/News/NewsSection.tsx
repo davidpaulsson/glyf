@@ -3,7 +3,8 @@ import IconGrid from '../../components/IconGrid';
 import { ISource, store, actions } from '../../store';
 import NewsItem from './NewsItem';
 import styles from './NewsSection.module.css';
-
+import IconCheck from '../../components/IconCheck';
+import { Tooltip } from 'react-tippy';
 const NewsSection = ({ source, index }: { source: ISource; index: number }) => {
   const { state, dispatch } = useContext(store);
   const [showSourceSelection, setShowSourceSelection] = useState(false);
@@ -16,9 +17,16 @@ const NewsSection = ({ source, index }: { source: ISource; index: number }) => {
             <h2>
               Select News Source <span>({source.title})</span>
             </h2>
-            <button onClick={() => setShowSourceSelection(false)}>
-              <IconGrid />
-            </button>
+            <Tooltip
+              size="small"
+              title="Save"
+              position="bottom"
+              trigger="mouseenter"
+            >
+              <button onClick={() => setShowSourceSelection(false)}>
+                <IconCheck />
+              </button>
+            </Tooltip>
           </div>
           <ul>
             {state.sources.sources.map((s) => (
@@ -49,9 +57,16 @@ const NewsSection = ({ source, index }: { source: ISource; index: number }) => {
         <>
           <div className={styles.title}>
             <h2>{source.title}</h2>
-            <button onClick={() => setShowSourceSelection(true)}>
-              <IconGrid />
-            </button>
+            <Tooltip
+              size="small"
+              title="Select News Source"
+              position="bottom"
+              trigger="mouseenter"
+            >
+              <button onClick={() => setShowSourceSelection(true)}>
+                <IconGrid />
+              </button>
+            </Tooltip>
           </div>
           <ul>
             {source.items.map((item, index) => (

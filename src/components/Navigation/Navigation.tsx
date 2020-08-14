@@ -1,11 +1,13 @@
 import classNames from 'classnames';
 import React, { useContext } from 'react';
+import { Tooltip } from 'react-tippy';
 import { actions, routes, store } from '../../store';
 import IconArticle from '../IconArticle';
-import IconOptions from '../IconOptions';
-import styles from './Navigation.module.css';
-import IconSun from '../IconSun';
+import IconLoading from '../IconLoading';
 import IconMoon from '../IconMoon';
+import IconOptions from '../IconOptions';
+import IconSun from '../IconSun';
+import styles from './Navigation.module.css';
 
 const Navigation: React.FC = () => {
   const { state, dispatch } = useContext(store);
@@ -13,48 +15,84 @@ const Navigation: React.FC = () => {
   const goToNews = () =>
     dispatch({ type: actions.NAVIGATE, payload: routes.NEWS });
 
-  console.log('state.navigation.currentRoute', state.navigation.currentRoute);
-
   return (
     <nav className={styles.nav}>
       <button onClick={goToNews}>
-        <h1>Glyf</h1>
+        <h1>
+          Glyf{' '}
+          {state.sources.loading && (
+            <span>
+              <IconLoading />{' '}
+              {state.sources.sources.length > 0 ? 'Updating' : 'Loading'}…
+            </span>
+          )}
+        </h1>
       </button>
       <div className={styles.buttons}>
-        <button
-          className={classNames({
-            [styles.active]: state.navigation.currentRoute === routes.NEWS,
-          })}
-          onClick={goToNews}
+        <Tooltip
+          size="small"
+          title="News"
+          position="bottom"
+          trigger="mouseenter"
         >
-          <IconArticle />
-        </button>
-        <button
-          className={classNames({
-            [styles.active]: state.navigation.currentRoute === routes.SETTINGS,
-          })}
-          onClick={() =>
-            dispatch({ type: actions.NAVIGATE, payload: routes.SETTINGS })
-          }
+          <button
+            className={classNames({
+              [styles.active]: state.navigation.currentRoute === routes.NEWS,
+            })}
+            onClick={goToNews}
+          >
+            <IconArticle />
+          </button>
+        </Tooltip>
+        <Tooltip
+          size="small"
+          title="Settings"
+          position="bottom"
+          trigger="mouseenter"
         >
-          <IconOptions />
-        </button>
+          <button
+            className={classNames({
+              [styles.active]:
+                state.navigation.currentRoute === routes.SETTINGS,
+            })}
+            onClick={() =>
+              dispatch({ type: actions.NAVIGATE, payload: routes.SETTINGS })
+            }
+          >
+            <IconOptions />
+          </button>
+        </Tooltip>
+
         {state.settings.isDarkMode ? (
-          <button
-            onClick={() =>
-              dispatch({ type: actions.SET_IS_DARK_MODE, payload: false })
-            }
+          <Tooltip
+            size="small"
+            title="Disable Dark Mode"
+            position="bottom"
+            trigger="mouseenter"
           >
-            <IconSun />
-          </button>
+            <button
+              onClick={() =>
+                dispatch({ type: actions.SET_IS_DARK_MODE, payload: false })
+              }
+            >
+              <IconSun />
+            </button>
+          </Tooltip>
         ) : (
-          <button
-            onClick={() =>
-              dispatch({ type: actions.SET_IS_DARK_MODE, payload: true })
-            }
+          <Tooltip
+            size="small"
+            title="Enable Dark Mode"
+            position="bottom"
+            trigger="mouseenter"
           >
-            <IconMoon />
-          </button>
+            <button
+              onClick={() =>
+                dispatch({ type: actions.SET_IS_DARK_MODE, payload: true })
+              }
+            >
+              <IconMoon />
+            </button>
+          </Tooltip>
         )}
       </div>
     </nav>

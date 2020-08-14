@@ -1,6 +1,6 @@
 {
   "name": "glyf-v3",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -17,6 +17,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "react-tippy": "^1.4.0",
     "remove-markdown": "^0.3.0",
     "rss-parser": "^3.9.0",
     "sanitize-html": "^1.27.2",

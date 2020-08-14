@@ -9,6 +9,8 @@ export enum actions {
   NAVIGATE,
   SET_OPEN_LINKS_IN_NEW_TAB,
   SET_IS_DARK_MODE,
+  SET_SYSTEM_DARK_MODE,
+  SET_LOADING_SOURCES,
   SET_SOURCES,
   SET_SOURCE,
 }
@@ -39,11 +41,13 @@ interface IState {
   settings: {
     openLinksInNewTab: boolean;
     isDarkMode: boolean;
+    useSystemPreferenceDarkMode: boolean;
     selectedSources: string[];
   };
   sources: {
     sources: ISource[];
     updatedAt: string | null;
+    loading: boolean;
   };
 }
 
@@ -61,11 +65,13 @@ const initialState = JSON.parse(
   settings: {
     openLinksInNewTab: false,
     isDarkMode: false,
-    selectedSources: null,
+    useSystemPreferenceDarkMode: true,
+    selectedSources: [],
   },
   sources: {
     sources: [],
     updatedAt: null,
+    loading: false,
   },
 };
 
@@ -104,19 +110,40 @@ const StateProvider: React.FC = ({ children }) => {
             settings: {
               ...state.settings,
               isDarkMode: action.payload,
+              useSystemPreferenceDarkMode: false,
+            },
+          };
+        case actions.SET_SYSTEM_DARK_MODE:
+          return {
+            ...state,
+            settings: {
+              ...state.settings,
+              useSystemPreferenceDarkMode: action.payload,
+            },
+          };
+        case actions.SET_LOADING_SOURCES:
+          return {
+            ...state,
+            sources: {
+              ...state.sources,
+              loading: true,
             },
           };
         case actions.SET_SOURCES:
           return {
             ...state,
-            sources: action.payload,
+            sources: {
+              ...action.payload,
+              loading: false,
+            },
             settings: {
               ...state.settings,
-              selectedSources: state.settings.selectedSources
-                ? state.settings.selectedSources
-                : take(action.payload.sources, 6).map(
-                    (source: { domain: string }) => source.domain
-                  ),
+              selectedSources:
+                state.settings.selectedSources.length > 0
+                  ? state.settings.selectedSources
+                  : take(action.payload.sources, 6).map(
+                      (source: { domain: string }) => source.domain
+                    ),
             },
           };
         case actions.SET_SOURCE:

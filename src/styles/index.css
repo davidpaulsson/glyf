@@ -31,3 +31,12 @@ a {
 
   color: var(--color-text);
 }
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+label input {
+  margin-right: var(--spacing);
+}

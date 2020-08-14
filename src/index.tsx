@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/reset.css';
+import 'react-tippy/dist/tippy.css';
 import './styles/variables.css';
 import './styles/scrollbar.css';
 import './styles/index.css';

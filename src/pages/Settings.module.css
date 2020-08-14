@@ -1,0 +1,10 @@
+.info {
+  max-width: 30rem;
+}
+
+.info a {
+  text-decoration: underline;
+}
+.info a:hover {
+  text-decoration: none;
+}
