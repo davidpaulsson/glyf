@@ -43,6 +43,9 @@
 }
 
 .star {
+  position: relative;
+  z-index: 0;
+
   margin-right: calc(var(--spacing) / 3);
 
   transform: scale(0.7);
