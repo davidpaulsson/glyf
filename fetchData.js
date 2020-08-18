@@ -91,6 +91,11 @@ const sources = [
     domain: 'https://www.nytimes.com',
     api: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
   },
+  {
+    title: 'Al Jazeera',
+    domain: 'aljazeera.com',
+    api: 'https://www.aljazeera.com/xml/rss/all.xml',
+  },
 ];
 
 const data = {
