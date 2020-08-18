@@ -11,6 +11,8 @@
 Currently this extension load articles from the following news sources
 
 - [Aftonbladet](https://www.aftonbladet.se/) 🇸🇪
+- [Al Jazeera](https://www.aljazeera.com/) 🌏
+- [BBC News](https://www.bbc.com/news) 🇬🇧
 - [Breakit](https://www.breakit.se/) 🇸🇪
 - [Dagens Industri](https://www.di.se/) 🇸🇪
 - [Dagens Media](https://www.dagensmedia.se/) 🇸🇪
@@ -19,6 +21,7 @@ Currently this extension load articles from the following news sources
 - [Expressen](https://www.expressen.se/) 🇸🇪
 - [Github (Trending repositories)](https://github.com/trending) 🇺🇸
 - [Hacker News](https://news.ycombinator.com/) 🇺🇸
+- [New York Times](https://www.nytimes.com/) 🇺🇸
 - [Product Hunt](https://www.producthunt.com/) 🇺🇸
 - [Resumé](https://www.resume.se/) 🇸🇪
 - [Svenska Dagbladet](https://www.svd.se/) 🇸🇪
