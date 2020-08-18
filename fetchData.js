@@ -82,6 +82,11 @@ const sources = [
     api: 'https://api.sr.se/api/rss/program/83?format=145',
   },
   {
+    title: 'BBC News',
+    domain: 'https://www.bbc.com/news',
+    api: 'http://feeds.bbci.co.uk/news/rss.xml',
+  },
+  {
     title: 'New York Times',
     domain: 'https://www.nytimes.com',
     api: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
