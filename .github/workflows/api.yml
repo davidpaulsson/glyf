@@ -12,33 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
       - uses: actions/cache@v2
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install
+      - name: Install packages
+        run: yarn install
 
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: api
+      - name: Generate json
+        run: yarn api
 
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build
+      - name: Generate build
+        run: yarn build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
