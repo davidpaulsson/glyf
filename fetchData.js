@@ -83,12 +83,12 @@ const sources = [
   },
   {
     title: 'BBC News',
-    domain: 'https://www.bbc.com/news',
+    domain: 'bbc.com/news',
     api: 'http://feeds.bbci.co.uk/news/rss.xml',
   },
   {
     title: 'New York Times',
-    domain: 'https://www.nytimes.com',
+    domain: 'nytimes.com',
     api: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
   },
   {
