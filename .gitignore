@@ -25,3 +25,4 @@ yarn-error.log*
 app.zip
 public/data.json
 .cache
+build.zip
