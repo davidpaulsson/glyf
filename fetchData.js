@@ -81,6 +81,11 @@ const sources = [
     domain: 'sverigesradio.se/ekot',
     api: 'https://api.sr.se/api/rss/program/83?format=145',
   },
+  {
+    title: 'New York Times',
+    domain: 'https://www.nytimes.com',
+    api: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
+  },
 ];
 
 const data = {
