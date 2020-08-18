@@ -1,9 +1,10 @@
+import moment from 'moment';
 import React, { useContext } from 'react';
+import IconCalendar from '../../components/IconCalendar';
+import IconCode from '../../components/IconCode';
+import IconUser from '../../components/IconUser';
 import { IItem, store } from '../../store';
 import styles from './NewsItem.module.css';
-import IconCalendar from '../../components/IconCalendar';
-import IconUser from '../../components/IconUser';
-import IconCode from '../../components/IconCode';
 
 const NewsItem = ({ item }: { item: IItem }) => {
   const { state } = useContext(store);
@@ -53,7 +54,7 @@ const NewsItem = ({ item }: { item: IItem }) => {
           item.published && (
             <small className={styles.published}>
               <IconCalendar />
-              {item.published}
+              {moment(item.sortDate).calendar()}
             </small>
           )
         )}
