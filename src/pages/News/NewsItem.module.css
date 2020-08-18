@@ -56,3 +56,16 @@
 
   width: var(--spacing);
 }
+
+.image {
+  float: right;
+
+  width: 5rem;
+  height: 4rem;
+  margin-left: var(--spacing);
+
+  border-radius: var(--spacing);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

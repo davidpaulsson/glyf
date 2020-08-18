@@ -18,6 +18,12 @@ const NewsItem = ({ item }: { item: IItem }) => {
           target: '_blank',
         })}
       >
+        {item.image && (
+          <div
+            className={styles.image}
+            style={{ backgroundImage: `url(${item.image})` }}
+          />
+        )}
         <h3 className={styles.title}>{item.title}</h3>
         <span className={styles.preamble}>{item.preamble}</span>
         {!!item.github ? (

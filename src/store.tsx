@@ -26,6 +26,7 @@ export interface IItem {
   language?: string;
   author?: string;
   stars?: number;
+  image?: string;
 }
 
 export interface ISource {
