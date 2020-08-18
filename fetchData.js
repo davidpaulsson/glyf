@@ -191,23 +191,26 @@ const asyncForEach = async (array, callback) => {
 };
 
 const start = async () => {
-  await asyncForEach(sources, async ({ title, domain, api }) => {
-    if (title === 'Github') {
-      const resp = await axios.get(api);
-      data.sources.push({
-        title,
-        domain,
-        items: normalize({ title, data: resp.data }),
-      });
-    } else {
-      const resp = await parser.parseURL(api);
-      data.sources.push({
-        title,
-        domain,
-        items: sortByDate(normalize({ title, data: resp.items })),
-      });
+  await asyncForEach(
+    orderBy(sources, 'domain'),
+    async ({ title, domain, api }) => {
+      if (title === 'Github') {
+        const resp = await axios.get(api);
+        data.sources.push({
+          title,
+          domain,
+          items: normalize({ title, data: resp.data }),
+        });
+      } else {
+        const resp = await parser.parseURL(api);
+        data.sources.push({
+          title,
+          domain,
+          items: sortByDate(normalize({ title, data: resp.items })),
+        });
+      }
     }
-  });
+  );
 
   fs.writeFile('./public/data.json', JSON.stringify(data), function (
     err,
