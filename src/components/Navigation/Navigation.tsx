@@ -71,9 +71,13 @@ const Navigation: React.FC = () => {
             trigger="mouseenter"
           >
             <button
-              onClick={() =>
-                dispatch({ type: actions.SET_IS_DARK_MODE, payload: false })
-              }
+              onClick={() => {
+                dispatch({ type: actions.SET_IS_DARK_MODE, payload: false });
+                dispatch({
+                  type: actions.SET_SYSTEM_DARK_MODE,
+                  payload: false,
+                });
+              }}
             >
               <IconSun />
             </button>
@@ -86,9 +90,13 @@ const Navigation: React.FC = () => {
             trigger="mouseenter"
           >
             <button
-              onClick={() =>
-                dispatch({ type: actions.SET_IS_DARK_MODE, payload: true })
-              }
+              onClick={() => {
+                dispatch({ type: actions.SET_IS_DARK_MODE, payload: true });
+                dispatch({
+                  type: actions.SET_SYSTEM_DARK_MODE,
+                  payload: false,
+                });
+              }}
             >
               <IconMoon />
             </button>

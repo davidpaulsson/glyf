@@ -111,7 +111,6 @@ const StateProvider: React.FC = ({ children }) => {
             settings: {
               ...state.settings,
               isDarkMode: action.payload,
-              useSystemPreferenceDarkMode: false,
             },
           };
         case actions.SET_SYSTEM_DARK_MODE:
