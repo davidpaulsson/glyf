@@ -10,25 +10,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
 
-      - uses: actions/setup-node@v1
+      - name: Setup node
+        uses: actions/setup-node@v1
         with:
           node-version: 12
 
-      - uses: borales/actions-yarn@v2.0.0
+      - name: Use cache
+        uses: actions/cache@v2
         with:
-          cmd: install
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build
+      - name: Install packages
+        run: yarn install
 
-      - uses: montudor/action-zip@v0.1.0
+      - name: Generate build
+        run: yarn build
+
+      - name: Package .zip
+        uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r ./app.zip ./build
 
-      - name: Upload & release
+      - name: 🚀 Upload & release
         uses: mnao305/chrome-extension-upload@1.1.0
         with:
           file-path: app.zip
