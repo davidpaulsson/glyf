@@ -22,6 +22,11 @@
 }
 
 .preamble {
+  display: inherit;
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
   color: var(--color-text-2);
 
   font-size: 1rem;
