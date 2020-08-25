@@ -7,7 +7,7 @@ build() {
 
   export INLINE_RUNTIME_CHUNK=false
   export GENERATE_SOURCEMAP=false
-  export PUBLIC_URL=/glyf/
+  # export PUBLIC_URL=/glyf/
 
   react-scripts build
 
