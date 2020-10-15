@@ -10,11 +10,13 @@ const parser = new Parser();
 const sanitizeHtml = require('sanitize-html');
 const removeMd = require('remove-markdown');
 
+const cheerio = require('cheerio');
+
 const sources = [
   {
     title: 'Github',
     domain: 'github.com',
-    api: 'https://github-trending-api.now.sh',
+    api: 'https://github.com/trending',
   },
   {
     title: 'Product Hunt',
@@ -153,36 +155,22 @@ const truncateString = (str) => {
   return str.slice(0, num) + '…';
 };
 
-const normalize = ({ title, data }) => {
-  switch (title) {
-    case 'Github':
-      return data.map((d) => ({
-        title: fixTitle(d.name),
-        url: d.url,
-        preamble: truncateString(stripHtml(d.description)),
-        language: d.language,
-        stars: d.stars,
-        author: d.author,
-        github: true,
-      }));
-    default:
-      return data.map((d) => ({
-        title: fixTitle(d.title),
-        url: d.link,
-        preamble: truncateString(stripHtml(d.content)),
-        published: moment(d.pubDate).calendar(),
-        sortDate: moment(d.pubDate).toDate(),
-        image: d.enclosure ? d.enclosure.url : extractImageUri(d),
-        description: d.content
-          ? removeMd(
-              sanitizeHtml(d.content, {
-                allowedTags: [],
-              }).trim()
-            )
-          : null,
-      }));
-  }
-};
+const normalize = ({ data }) =>
+  data.map((d) => ({
+    title: fixTitle(d.title),
+    url: d.link,
+    preamble: truncateString(stripHtml(d.content)),
+    published: moment(d.pubDate).calendar(),
+    sortDate: moment(d.pubDate).toDate(),
+    image: d.enclosure ? d.enclosure.url : extractImageUri(d),
+    description: d.content
+      ? removeMd(
+          sanitizeHtml(d.content, {
+            allowedTags: [],
+          }).trim()
+        )
+      : null,
+  }));
 
 const asyncForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
@@ -195,11 +183,54 @@ const start = async () => {
     orderBy(sources, 'domain'),
     async ({ title, domain, api }) => {
       if (title === 'Github') {
-        const resp = await axios.get(api);
+        // We need to scrape...
+        const { data: html } = await axios.get(api);
+        const $ = await cheerio.load(html);
+
+        const items = $('.Box-row')
+          .get()
+          .map((row) => {
+            try {
+              const repoLink = $(row).find('h1 a').text();
+              const repoLinkSplit = repoLink.split('/');
+              const author = repoLinkSplit[0].trim();
+              const repoName = repoLinkSplit[1].trim();
+              const url = $(row).find('h1 a').attr('href');
+              const desc = $(row).find('h1 + p').text().trim();
+              const language = $(row)
+                .find('.repo-language-color + span')
+                .text()
+                .trim();
+
+              const stars = $(row)
+                .find('.repo-language-color')
+                .parent()
+                .next()
+                .text()
+                .trim();
+
+              const title = fixTitle(repoName);
+              const preamble = truncateString(stripHtml(desc));
+
+              return {
+                title: title !== '' ? title : null,
+                url: 'https://github.com' + url,
+                preamble: preamble !== '' ? preamble : null,
+                language: language !== '' ? language : null,
+                stars: stars !== '' ? stars : null,
+                author: author !== '' ? author : null,
+                github: true,
+              };
+            } catch (err) {
+              console.error('parse error', err);
+            }
+          })
+          .filter(Boolean);
+
         data.sources.push({
           title,
           domain,
-          items: normalize({ title, data: resp.data }),
+          items,
         });
       } else {
         const resp = await parser.parseURL(api);
