@@ -15,7 +15,7 @@
     "cheerio": "^1.0.0-rc.3",
     "classnames": "^2.2.6",
     "lodash.orderby": "^4.6.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
