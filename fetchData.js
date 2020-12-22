@@ -189,7 +189,8 @@ const start = async () => {
 
         const items = $('.Box-row')
           .get()
-          .forEach((row) => {
+          // eslint-disable-next-line array-callback-return
+          .map((row) => {
             try {
               const repoLink = $(row).find('h1 a').text();
               const repoLinkSplit = repoLink.split('/');
