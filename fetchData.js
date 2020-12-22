@@ -189,7 +189,7 @@ const start = async () => {
 
         const items = $('.Box-row')
           .get()
-          .map((row) => {
+          .forEach((row) => {
             try {
               const repoLink = $(row).find('h1 a').text();
               const repoLinkSplit = repoLink.split('/');
