@@ -21,7 +21,7 @@
     "react-scripts": "3.4.3",
     "react-tippy": "^1.4.0",
     "remove-markdown": "^0.3.0",
-    "rss-parser": "^3.9.0",
+    "rss-parser": "^3.12.0",
     "sanitize-html": "^1.27.2",
     "typescript": "~4.0.2"
   },
