@@ -237,16 +237,16 @@ const start = async () => {
           return;
         } 
         
-        if (title === 'Resume') {
-          const xml = await axios.get(api);
-          const resp = await parser.parseString(xml.data);
-          data.sources.push({
-            title,
-            domain,
-            items: sortByDate(normalize({ title, data: resp.items })),
-          });
-          return;
-        }
+        // if (title === 'Resume') {
+        //   const xml = await axios.get(api);
+        //   const resp = await parser.parseString(xml.data);
+        //   data.sources.push({
+        //     title,
+        //     domain,
+        //     items: sortByDate(normalize({ title, data: resp.items })),
+        //   });
+        //   return;
+        // }
         
         const resp = await parser.parseURL(api);
         data.sources.push({
@@ -268,7 +268,7 @@ const start = async () => {
     if (err) {
       console.log('error', err);
     } else {
-      console.log('Done!');
+      console.log('Done!', data);
     }
   });
 };
