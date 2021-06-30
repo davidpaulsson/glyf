@@ -174,7 +174,11 @@ const normalize = ({ data }) =>
 
 const asyncForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
-    await callback(array[index], index, array);
+    try {
+      await callback(array[index], index, array);
+    } catch (error) {
+      console.log(array[index], error)
+    }
   }
 };
 
@@ -240,6 +244,17 @@ const start = async () => {
         if (title === 'Resume') {
           const xml = await axios.get(api);
           const resp = await parser.parseString(xml.data);
+          data.sources.push({
+            title,
+            domain,
+            items: sortByDate(normalize({ title, data: resp.items })),
+          });
+          return;
+        }
+
+        if (title === 'Dagens Media') {
+          const xml = await axios.get(api);
+          const resp = await parser.parseString(xml.data.value);
           data.sources.push({
             title,
             domain,
