@@ -25,9 +25,11 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install packages
+        if: ${{ success() }}
         run: yarn install
 
       - name: Generate json
+        if: ${{ success() }}
         run: yarn api
 
       - name: Generate build
