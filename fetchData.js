@@ -56,7 +56,7 @@ const sources = [
   {
     title: 'Aftonbladet',
     domain: 'aftonbladet.se',
-    api: 'https://www.aftonbladet.se/rss.xml',
+    api: 'https://rss.aftonbladet.se/rss2/small/pages/sections/senastenytt/',
   },
   {
     title: 'Dagens Nyheter',
@@ -174,70 +174,97 @@ const normalize = ({ data }) =>
 
 const asyncForEach = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {
-    await callback(array[index], index, array);
+    try {
+      await callback(array[index], index, array);
+    } catch (error) {
+      console.log(array[index], error);
+    }
   }
 };
 
 const start = async () => {
-  await asyncForEach(
-    orderBy(sources, 'domain'),
-    async ({ title, domain, api }) => {
-      if (title === 'Github') {
-        // We need to scrape...
-        const { data: html } = await axios.get(api);
-        const $ = await cheerio.load(html);
+  try {
+    await asyncForEach(
+      orderBy(sources, 'domain'),
+      async ({ title, domain, api }) => {
+        if (title === 'Github') {
+          // We need to scrape...
+          const { data: html } = await axios.get(api);
+          const $ = cheerio.load(html);
 
-        const items = $('.Box-row')
-          .get()
-          .map((row) => {
-            try {
-              const repoLink = $(row).find('h1 a').text();
-              const repoLinkSplit = repoLink.split('/');
-              const author = repoLinkSplit[0].trim();
-              const repoName = repoLinkSplit[1].trim();
-              const url = $(row).find('h1 a').attr('href');
-              const desc = $(row).find('h1 + p').text().trim();
-              const language = $(row)
-                .find('.repo-language-color + span')
-                .text()
-                .trim();
+          const items = $('.Box-row')
+            .get()
+            // eslint-disable-next-line array-callback-return
+            .map((row) => {
+              console.log('row', row);
+              try {
+                const repoLink = $(row).find('h2 a').text();
+                const repoLinkSplit = repoLink.split('/');
+                const author = repoLinkSplit[0].trim();
+                const repoName = repoLinkSplit[1].trim();
+                const url = $(row).find('h2 a').attr('href');
+                const desc = $(row).find('h2 + p').text().trim();
+                const language = $(row)
+                  .find('.repo-language-color + span')
+                  .text()
+                  .trim();
 
-              const stars = $(row)
-                .find('.repo-language-color')
-                .parent()
-                .next()
-                .text()
-                .trim();
+                const stars = $(row)
+                  .find('.repo-language-color')
+                  .parent()
+                  .next()
+                  .text()
+                  .trim();
 
-              const title = fixTitle(repoName);
-              const preamble = truncateString(stripHtml(desc));
+                const title = fixTitle(repoName);
+                const preamble = truncateString(stripHtml(desc));
 
-              return {
-                title: title !== '' ? title : null,
-                url: 'https://github.com' + url,
-                preamble: preamble !== '' ? preamble : null,
-                language: language !== '' ? language : null,
-                stars: stars !== '' ? stars : null,
-                author: author !== '' ? author : null,
-                github: true,
-              };
-            } catch (err) {
-              console.error('parse error', err);
-            }
-          })
-          .filter(Boolean);
+                return {
+                  title: title !== '' ? title : null,
+                  url: 'https://github.com' + url,
+                  preamble: preamble !== '' ? preamble : null,
+                  language: language !== '' ? language : null,
+                  stars: stars !== '' ? stars : null,
+                  author: author !== '' ? author : null,
+                  github: true,
+                };
+              } catch (err) {
+                console.error('parse error', err);
+              }
+            })
+            .filter(Boolean);
 
-        data.sources.push({
-          title,
-          domain,
-          items,
-        });
-        return;
-      } 
-      
-      if (title === 'Resume') {
-        const xml = await axios.get(api);
-        const resp = await parser.parseString(xml.data);
+          data.sources.push({
+            title,
+            domain,
+            items,
+          });
+          return;
+        }
+
+        if (title === 'Resume') {
+          const xml = await axios.get(api);
+          const resp = await parser.parseString(xml.data);
+          data.sources.push({
+            title,
+            domain,
+            items: sortByDate(normalize({ title, data: resp.items })),
+          });
+          return;
+        }
+
+        if (title === 'Dagens Media') {
+          const xml = await axios.get(api);
+          const resp = await parser.parseString(xml.data.value);
+          data.sources.push({
+            title,
+            domain,
+            items: sortByDate(normalize({ title, data: resp.items })),
+          });
+          return;
+        }
+
+        const resp = await parser.parseURL(api);
         data.sources.push({
           title,
           domain,
@@ -245,27 +272,22 @@ const start = async () => {
         });
         return;
       }
-      
-      const resp = await parser.parseURL(api);
-      data.sources.push({
-        title,
-        domain,
-        items: sortByDate(normalize({ title, data: resp.items })),
-      });
-      return;
+    );
+  } catch (error) {
+    console.log(error);
+  }
+
+  fs.writeFile(
+    './public/data.json',
+    JSON.stringify(data),
+    function (err, result) {
+      if (err) {
+        console.log('error', err);
+      } else {
+        console.log('Done!', data);
+      }
     }
   );
-
-  fs.writeFile('./public/data.json', JSON.stringify(data), function (
-    err,
-    result
-  ) {
-    if (err) {
-      console.log('error', err);
-    } else {
-      console.log('Done!');
-    }
-  });
 };
 
 start();

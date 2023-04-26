@@ -16,7 +16,9 @@ function App() {
     dispatch({ type: actions.SET_LOADING_SOURCES });
 
     const fetchArticles = async () => {
-      const response = await fetch('https://davidpaulsson.se/glyf/data.json');
+      const response = await fetch(
+        'https://davidpaulsson.github.io/glyf/data.json'
+      );
       if (response.status >= 200 && response.status <= 299) {
         const jsonResponse = await response.json();
         dispatch({
