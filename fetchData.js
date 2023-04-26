@@ -177,7 +177,7 @@ const asyncForEach = async (array, callback) => {
     try {
       await callback(array[index], index, array);
     } catch (error) {
-      console.log(array[index], error)
+      console.log(array[index], error);
     }
   }
 };
@@ -190,34 +190,35 @@ const start = async () => {
         if (title === 'Github') {
           // We need to scrape...
           const { data: html } = await axios.get(api);
-          const $ = await cheerio.load(html);
-  
+          const $ = cheerio.load(html);
+
           const items = $('.Box-row')
             .get()
             // eslint-disable-next-line array-callback-return
             .map((row) => {
+              console.log('row', row);
               try {
-                const repoLink = $(row).find('h1 a').text();
+                const repoLink = $(row).find('h2 a').text();
                 const repoLinkSplit = repoLink.split('/');
                 const author = repoLinkSplit[0].trim();
                 const repoName = repoLinkSplit[1].trim();
-                const url = $(row).find('h1 a').attr('href');
-                const desc = $(row).find('h1 + p').text().trim();
+                const url = $(row).find('h2 a').attr('href');
+                const desc = $(row).find('h2 + p').text().trim();
                 const language = $(row)
                   .find('.repo-language-color + span')
                   .text()
                   .trim();
-  
+
                 const stars = $(row)
                   .find('.repo-language-color')
                   .parent()
                   .next()
                   .text()
                   .trim();
-  
+
                 const title = fixTitle(repoName);
                 const preamble = truncateString(stripHtml(desc));
-  
+
                 return {
                   title: title !== '' ? title : null,
                   url: 'https://github.com' + url,
@@ -232,15 +233,15 @@ const start = async () => {
               }
             })
             .filter(Boolean);
-  
+
           data.sources.push({
             title,
             domain,
             items,
           });
           return;
-        } 
-        
+        }
+
         if (title === 'Resume') {
           const xml = await axios.get(api);
           const resp = await parser.parseString(xml.data);
@@ -262,7 +263,7 @@ const start = async () => {
           });
           return;
         }
-        
+
         const resp = await parser.parseURL(api);
         data.sources.push({
           title,
@@ -273,19 +274,20 @@ const start = async () => {
       }
     );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 
-  fs.writeFile('./public/data.json', JSON.stringify(data), function (
-    err,
-    result
-  ) {
-    if (err) {
-      console.log('error', err);
-    } else {
-      console.log('Done!', data);
+  fs.writeFile(
+    './public/data.json',
+    JSON.stringify(data),
+    function (err, result) {
+      if (err) {
+        console.log('error', err);
+      } else {
+        console.log('Done!', data);
+      }
     }
-  });
+  );
 };
 
 start();
